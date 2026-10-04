@@ -1,0 +1,50 @@
+---
+// Tabs for variations of the same content (e.g. computer and phone). Children are <Tab label="…">.
+// Without JavaScript every panel shows, one below the other, with its label.
+interface Props { label?: string }
+const { label = 'Opções' } = Astro.props;
+---
+<div class="tabs" data-tabs data-tabs-label={label}>
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tabs]').forEach((root, n) => {
+    const panels = [...root.querySelectorAll<HTMLElement>(':scope > [data-tab-panel]')];
+    if (panels.length < 2) return;
+    const list = document.createElement('div');
+    list.className = 'tabs__list';
+    list.setAttribute('role', 'tablist');
+    list.setAttribute('aria-label', root.dataset.tabsLabel || 'Opções');
+    const tabs = panels.map((panel, i) => {
+      const tab = document.createElement('button');
+      tab.type = 'button';
+      tab.className = 'tabs__tab';
+      tab.id = `tabs-${n}-tab-${i}`;
+      panel.id = `tabs-${n}-panel-${i}`;
+      tab.textContent = panel.dataset.tabPanel || `Opção ${i + 1}`;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panel.id);
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', tab.id);
+      panel.tabIndex = 0;
+      list.appendChild(tab);
+      return tab;
+    });
+    const select = (i: number, focus = false) => {
+      tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; panels[k].hidden = k !== i; });
+      if (focus) tabs[i].focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(i));
+      t.addEventListener('keydown', (e) => {
+        const last = tabs.length - 1;
+        const to = e.key === 'ArrowRight' ? (i === last ? 0 : i + 1) : e.key === 'ArrowLeft' ? (i === 0 ? last : i - 1) : e.key === 'Home' ? 0 : e.key === 'End' ? last : null;
+        if (to !== null) { e.preventDefault(); select(to, true); }
+      });
+    });
+    root.prepend(list);
+    root.classList.add('is-ready');
+    select(0);
+  });
+</script>

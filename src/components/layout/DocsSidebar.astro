@@ -1,0 +1,42 @@
+---
+// Article navigation, grouped like the product's sidebar. Rendered in the desktop column and
+// inside the mobile drawer.
+import Icon from '../Icon.astro';
+import { getSidebar } from '../../lib/articles';
+
+interface Props { currentUrl?: string; currentCategory?: string }
+const { currentUrl, currentCategory } = Astro.props;
+const groups = await getSidebar();
+---
+<nav class="sidenav" aria-label="Artigos da Central de Ajuda">
+  <a class="sidenav__home" href="/" aria-current={currentUrl === '/' ? 'page' : undefined}><Icon name="house" size={16} />Início da Central de Ajuda</a>
+  {groups.map((group) => {
+    const flat = group.topics.length === 1 && group.topics[0].label === group.label;
+    return (
+      <div class="sidenav__group">
+        <p class="sidenav__group-label">{group.label}</p>
+        {flat ? (
+          <ul class="sidenav__articles sidenav__articles--flat">
+            {group.topics[0].articles.map((a) => <li><a class="sidenav__link" href={a.url} aria-current={a.url === currentUrl ? 'page' : undefined}>{a.title}</a></li>)}
+          </ul>
+        ) : (
+          <ul class="sidenav__list">
+            {group.topics.map((topic) => {
+              const open = topic.articles.some((a) => a.url === currentUrl) || (!currentUrl && currentCategory === topic.category);
+              return (
+                <li class="sidenav__topic">
+                  <details open={open}>
+                    <summary>{topic.label}<Icon name="chevron-right" size={14} class="sidenav__chev" /></summary>
+                    <ul class="sidenav__articles">
+                      {topic.articles.map((a) => <li><a class="sidenav__link" href={a.url} aria-current={a.url === currentUrl ? 'page' : undefined}>{a.title}</a></li>)}
+                    </ul>
+                  </details>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+    );
+  })}
+</nav>

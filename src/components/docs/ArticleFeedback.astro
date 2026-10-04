@@ -1,0 +1,60 @@
+---
+// "Este artigo resolveu sua dúvida?" Ready for a future endpoint (PUBLIC_FEEDBACK_ENDPOINT):
+// when set, the answer is sent as JSON { article, helpful, comment, at }; when empty, nothing
+// leaves the browser. Every answer also fires the DOM event `sile-help:feedback` for analytics.
+import Icon from '../Icon.astro';
+import { site } from '../../config/site';
+interface Props { article: string }
+const { article } = Astro.props;
+---
+<section class="feedback" aria-labelledby="feedback-q" data-feedback data-article={article} data-endpoint={site.feedbackEndpoint || undefined}>
+  <p class="feedback__q" id="feedback-q">Este artigo resolveu sua dúvida?</p>
+  <div class="feedback__choices" data-feedback-choices>
+    <button type="button" class="h-btn h-btn--secondary h-btn--sm" data-feedback-answer="yes" aria-pressed="false"><Icon name="thumbs-up" size={14} />Sim</button>
+    <button type="button" class="h-btn h-btn--secondary h-btn--sm" data-feedback-answer="no" aria-pressed="false"><Icon name="thumbs-down" size={14} />Não</button>
+  </div>
+  <form class="feedback__form" hidden data-feedback-form>
+    <label for="feedback-comment">O que faltou? (opcional)</label>
+    <textarea id="feedback-comment" class="h-input" rows="3" maxlength="500" placeholder="Ex.: não encontrei o botão descrito no passo 3." data-feedback-comment></textarea>
+    <div class="feedback__form-foot">
+      <span>Não inclua dados de pacientes nem senhas.</span>
+      <button type="submit" class="h-btn h-btn--neutral h-btn--sm">Enviar comentário</button>
+    </div>
+  </form>
+  <p class="feedback__thanks" role="status" hidden data-feedback-thanks></p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-feedback]').forEach((root) => {
+    const article = root.dataset.article || location.pathname;
+    const endpoint = root.dataset.endpoint;
+    const key = `sile-help:feedback:${article}`;
+    const choices = root.querySelector<HTMLElement>('[data-feedback-choices]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-feedback-form]')!;
+    const thanks = root.querySelector<HTMLElement>('[data-feedback-thanks]')!;
+    const comment = root.querySelector<HTMLTextAreaElement>('[data-feedback-comment]')!;
+    let helpful: boolean | null = null;
+
+    const send = (payload: { helpful: boolean; comment?: string }) => {
+      const body = { article, ...payload, at: new Date().toISOString() };
+      root.dispatchEvent(new CustomEvent('sile-help:feedback', { bubbles: true, detail: body }));
+      try { localStorage.setItem(key, JSON.stringify(body)); } catch { /* storage unavailable */ }
+      if (endpoint) fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), keepalive: true }).catch(() => {});
+    };
+    const done = (text: string) => { choices.hidden = true; form.hidden = true; thanks.hidden = false; thanks.textContent = text; };
+
+    try { if (localStorage.getItem(key)) { done('Obrigado, você já avaliou este artigo.'); return; } } catch { /* ignore */ }
+
+    root.querySelectorAll<HTMLButtonElement>('[data-feedback-answer]').forEach((btn) => btn.addEventListener('click', () => {
+      helpful = btn.dataset.feedbackAnswer === 'yes';
+      root.querySelectorAll('[data-feedback-answer]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      if (helpful) { send({ helpful }); done('Obrigado! Que bom que ajudou.'); }
+      else { form.hidden = false; comment.focus(); }
+    }));
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      send({ helpful: false, comment: comment.value.trim().slice(0, 500) || undefined });
+      done('Obrigado pelo retorno. Vamos usar seu comentário para melhorar este artigo.');
+    });
+  });
+</script>

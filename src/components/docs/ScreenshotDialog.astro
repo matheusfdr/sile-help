@@ -1,0 +1,29 @@
+---
+// One dialog per page shows any screenshot at full size (opened by <Screenshot>).
+import Icon from '../Icon.astro';
+---
+<dialog class="shot-dialog" aria-labelledby="shot-dialog-caption" data-shot-dialog>
+  <div class="shot-dialog__bar">
+    <p id="shot-dialog-caption" data-shot-caption></p>
+    <button type="button" class="h-icon-btn h-icon-btn--ghost" aria-label="Fechar imagem" data-shot-close><Icon name="x" size={18} /></button>
+  </div>
+  <div class="shot-dialog__img"><img alt="" data-shot-img /></div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-shot-dialog]');
+  if (dialog) {
+    const img = dialog.querySelector<HTMLImageElement>('[data-shot-img]')!;
+    const caption = dialog.querySelector<HTMLElement>('[data-shot-caption]')!;
+    document.addEventListener('click', (e) => {
+      const trigger = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-zoom]');
+      if (!trigger) return;
+      img.src = trigger.dataset.zoom || '';
+      img.alt = trigger.dataset.zoomAlt || '';
+      caption.textContent = trigger.dataset.zoomCaption || '';
+      dialog.showModal();
+    });
+    dialog.querySelector('[data-shot-close]')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+  }
+</script>

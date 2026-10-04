@@ -1,0 +1,22 @@
+---
+import Logo from '../Logo.astro';
+import { links, site } from '../../config/site';
+const year = new Date().getFullYear();
+---
+<footer class="help-footer">
+  <div class="help-footer__inner">
+    <div class="help-footer__brand">
+      <Logo size={22} />
+      <span>© {year} {site.name}</span>
+    </div>
+    <nav aria-label="Rodapé">
+      <ul>
+        <li><a href="/">Central de Ajuda</a></li>
+        <li><a href={links.privacy}>Privacidade</a></li>
+        <li><a href={links.terms}>Termos</a></li>
+        <li><a href={links.support}>Falar com o suporte</a></li>
+        <li><a href={links.app}>Ir para o Sile</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>

@@ -1,0 +1,79 @@
+:root{
+/* Violet — Sile brand. 500 = brand primary (#625DF5), 600 = hover, 700 = pressed, 50/100 = subtle/soft. 200–400 = chart ramp. */
+--violet-50:#F6F5FF;--violet-100:#EEEDFF;--violet-200:#E1E0FD;--violet-300:#B8B5FA;--violet-400:#8B85F7;--violet-500:#625DF5;--violet-600:#514CEB;--violet-700:#4338CA;--violet-800:#3730A3;--violet-900:#272270;
+/* Grey — Sile neutrals; 50 = app background, 100 = subtle surface, 200/300 = borders, 900 = ink / wordmark (#111318) */
+--white:#FFFFFF;--grey-50:#F7F8FA;--grey-100:#F2F4F7;--grey-150:#EAECF0;--grey-200:#E4E7EC;--grey-300:#D0D5DD;--grey-400:#98A2B3;--grey-500:#667085;--grey-600:#475467;--grey-700:#344054;--grey-800:#1D2939;--grey-900:#111318;--black:#0A0B0E;
+/* Semantic hues — 500 = state colour, 50 = soft background, 600/700 = text on soft background */
+--green-50:#ECFDF3;--green-100:#D1FADF;--green-400:#22C55E;--green-500:#16A34A;--green-600:#15803D;--green-700:#166534;
+--yellow-50:#FFFAEB;--yellow-100:#FEF0C7;--yellow-400:#F59E0B;--yellow-500:#D97706;--yellow-600:#B45309;--yellow-700:#92400E;
+--red-50:#FEF3F2;--red-100:#FEE4E2;--red-400:#F87171;--red-500:#DC2626;--red-600:#B91C1C;--red-700:#991B1B;
+--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-400:#3B82F6;--blue-500:#2563EB;--blue-600:#1D4ED8;--blue-700:#1E40AF;
+--cyan-500:#06B6D4;
+/* Channel — WhatsApp green only for channel glyphs, never as brand colour */
+--whatsapp-500:#25D366;--whatsapp-700:#128C4B;
+
+/* ---- Sile semantic tokens (official palette names) ---- */
+--brand-primary:var(--violet-500);
+--brand-hover:var(--violet-600);
+--brand-pressed:var(--violet-700);
+--brand-soft:var(--violet-100);
+--brand-subtle:var(--violet-50);
+
+--bg-app:var(--grey-50);
+--bg-surface:var(--white);
+--bg-subtle:var(--grey-100);
+--bg-inverse:var(--grey-900);
+
+--success:var(--green-500);--success-soft:var(--green-50);
+--warning:var(--yellow-500);--warning-soft:var(--yellow-50);
+--danger:var(--red-500);--danger-soft:var(--red-50);
+--info:var(--blue-500);--info-soft:var(--blue-50);
+
+/* Conversation ownership: IA = brand, humano = info/blue */
+--ai:var(--brand-primary);--ai-soft:var(--brand-soft);
+--human:var(--info);--human-soft:var(--info-soft);
+
+/* ---- Surface / text / border aliases used by components ---- */
+--surface-card:var(--bg-surface);
+--surface-raised:var(--bg-surface);
+--surface-muted:var(--grey-50);
+--surface-sunken:var(--grey-100);
+--surface-hover:var(--grey-100);
+--surface-inverse:var(--grey-900);
+--surface-brand:var(--brand-primary);
+--surface-brand-soft:var(--brand-subtle);
+--surface-selected:var(--brand-subtle);
+--surface-overlay:rgba(17,19,24,.32);
+
+--text-primary:var(--grey-900);
+--text-secondary:var(--grey-600);
+--text-tertiary:var(--grey-500);
+--text-placeholder:var(--grey-400);
+--text-disabled:var(--grey-400);
+--text-inverse:var(--white);
+--text-brand:var(--brand-hover);
+--text-link:var(--brand-primary);
+--text-success:var(--green-700);
+--text-warning:var(--yellow-700);
+--text-danger:var(--red-600);
+
+--border-subtle:var(--grey-150);
+--border-default:var(--grey-200);
+--border-strong:var(--grey-300);
+--border-focus:var(--brand-primary);
+--border-brand:var(--violet-200);
+
+--status-success:var(--success);
+--status-warning:var(--warning);
+--status-danger:var(--danger);
+--status-info:var(--info);
+--status-neutral:var(--grey-400);
+
+/* ---- Charts: violet stays dominant; categorical only for category comparison ---- */
+--chart-1:var(--violet-500);--chart-2:var(--violet-400);--chart-3:var(--violet-300);--chart-4:var(--violet-200);
+--chart-cat-1:var(--violet-500);--chart-cat-2:var(--blue-400);--chart-cat-3:var(--cyan-500);--chart-cat-4:var(--green-400);--chart-cat-5:var(--yellow-400);
+
+--gradient-brand:linear-gradient(135deg,#7A75F7 0%,#625DF5 55%,#514CEB 100%); /* @kind color */
+--gradient-headline:linear-gradient(180deg,#FFFFFF 0%,#98A2B3 100%); /* @kind color */
+--gradient-headline-light:linear-gradient(180deg,#111318 0%,#98A2B3 100%); /* @kind color */
+}

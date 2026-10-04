@@ -1,0 +1,18 @@
+---
+// Lucide icons, the same set the product uses (same 1.6 stroke). Inlined at build time.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+interface Props { name: string; size?: number; strokeWidth?: number; class?: string; label?: string }
+const { name, size = 16, strokeWidth = 1.6, class: cls, label } = Astro.props;
+
+const cache: Map<string, string> = ((globalThis as any).__helpIcons ??= new Map());
+let svg = cache.get(name);
+if (!svg) {
+  const raw = readFileSync(join(process.cwd(), 'node_modules', 'lucide-static', 'icons', `${name}.svg`), 'utf8');
+  svg = raw.replace(/<!--[\s\S]*?-->/g, '').replace(/\s*class="[^"]*"/, '').replace(/\s*width="24"\s*height="24"/, '').replace(/\s+/g, ' ').trim();
+  cache.set(name, svg);
+}
+const html = svg.replace('stroke-width="2"', `stroke-width="${strokeWidth}"`).replace('<svg', label ? `<svg role="img" aria-label="${label}"` : '<svg aria-hidden="true" focusable="false"');
+---
+<span class:list={['h-icon', cls]} style={`width:${size}px;height:${size}px`} set:html={html} />

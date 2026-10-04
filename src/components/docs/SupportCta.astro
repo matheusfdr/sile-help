@@ -1,0 +1,12 @@
+---
+import Icon from '../Icon.astro';
+import { links, site } from '../../config/site';
+---
+<section class="support" aria-labelledby="support-title">
+  <span class="support__icon"><Icon name="life-buoy" size={20} /></span>
+  <div class="support__text">
+    <b id="support-title">Ainda precisa de ajuda?</b>
+    <span>Escreva para {site.supportEmail}. {site.supportHours}</span>
+  </div>
+  <a class="h-btn h-btn--secondary h-btn--sm" href={links.support}>Falar com o suporte</a>
+</section>

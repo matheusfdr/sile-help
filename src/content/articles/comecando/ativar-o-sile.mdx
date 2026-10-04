@@ -1,0 +1,84 @@
+---
+title: Ativar o Sile
+description: Confira os requisitos e ative o Sile para ele começar a responder os pacientes no WhatsApp. Saiba também como pausar e o que cada status significa.
+type: tutorial
+topic: comecando
+order: 9
+lastUpdated: 2026-10-04
+related:
+  - /comecando/testar-no-playground
+  - /comecando/conectar-whatsapp
+  - /atendimento/assumir-conversa
+aliases:
+  - ativar ia
+  - ligar o sile
+  - pausar o sile
+  - desligar ia
+  - status do agente
+  - rascunho
+  - sile não responde
+---
+
+Ativar é a decisão que coloca o Sile para atender. A partir desse momento, ele responde automaticamente os pacientes que escrevem para o WhatsApp da clínica, e a equipe acompanha tudo pela Inbox.
+
+## Antes de começar
+
+- Só **Owners** e **Admins** ativam o Sile.
+- A configuração guiada pede quatro itens: pelo menos um serviço, pelo menos um profissional, o WhatsApp conectado e o Sile testado.
+
+## Como ativar pela configuração guiada
+
+<Steps>
+  <Step title="Abra a etapa Ativar">
+    Na configuração guiada, avance até a etapa 9, **Ativar**. A lista mostra cada requisito com um ícone verde quando está pronto.
+  </Step>
+  <Step title="Resolva o que estiver faltando">
+    Se algum item estiver pendente, clique em **Resolver** ao lado dele para ir direto à etapa correspondente. Quando tudo estiver pronto, aparece o aviso "Tudo pronto".
+
+    <Screenshot src="/images/comecando/ativar-01-checklist.webp" alt="Etapa 9 de 9, Ativar, com os quatro requisitos prontos: 6 serviços cadastrados, 3 profissionais, WhatsApp conectado e Sile testado, o aviso Tudo pronto e o botão Ativar o Sile destacado." />
+  </Step>
+  <Step title="Clique em Ativar o Sile e confirme">
+    Na janela "Ativar o Sile agora?", clique em **Ativar**.
+
+    <Screenshot src="/images/comecando/ativar-02-confirmar.webp" alt="Janela de confirmação Ativar o Sile agora?, explicando que ele começa a responder os pacientes no WhatsApp e pode ser pausado a qualquer momento em Agente, com os botões Cancelar e Ativar." narrow />
+  </Step>
+</Steps>
+
+Você volta para o Início e aparece a mensagem "O Sile está ativo". Pronto: as próximas mensagens de pacientes já são respondidas pelo Sile.
+
+## Mudar o status depois
+
+O status do agente também fica na tela **Inteligência → Agente**, no quadro **Status**. Escolha uma das opções:
+
+<Screenshot src="/images/comecando/ativar-04-status-agente.webp" alt="Quadro Status da tela Agente com o status Ativo, a descrição Atende os pacientes no WhatsApp e as opções Rascunho, Teste, Ativo e Pausado destacadas." />
+
+| Status | O que acontece |
+| --- | --- |
+| <Status>Rascunho</Status> | O Sile ainda não responde pacientes. Use enquanto configura e testa no Playground. |
+| <Status tone="warning">Teste</Status> | A clínica ainda está testando: o Sile não atende os pacientes no WhatsApp. |
+| <Status tone="success">Ativo</Status> | O Sile atende os pacientes no WhatsApp. |
+| <Status>Pausado</Status> | Pausado pela clínica. A configuração fica guardada e a equipe atende as conversas. |
+
+Para escolher **Ativo** pela tela Agente, o Sile pede uma confirmação: na janela "Ativar o Sile?", clique em **Ativar agora**. Os outros status mudam na hora.
+
+<Callout title="Pausar não apaga nada">
+  Ao pausar, nome, personalidade, regras e todo o resto da configuração continuam salvos. As conversas novas ficam com a equipe, e a Inbox mostra um aviso de que o Sile está pausado.
+</Callout>
+
+## Quando o Sile está ativo, mas não atende
+
+O status escolhido pela clínica é uma coisa; se o Sile consegue atender agora é outra. Mesmo **Ativo**, ele não responde pacientes quando:
+
+- o **WhatsApp está desconectado** ou com erro: reconecte em Integrações. Veja [Conectar seu WhatsApp](/comecando/conectar-whatsapp);
+- o **limite mensal de mensagens do Sile** do plano foi atingido: a equipe continua atendendo pela Inbox;
+- o **plano atual não inclui** o agente de IA.
+
+Nesses casos, o Sile avisa no Início, na Inbox e na tela Agente. Sem WhatsApp, o aviso é "WhatsApp desconectado" (ou "WhatsApp com erro de conexão"). Nos outros casos, o aviso é "O Sile não está atendendo", com o motivo.
+
+<Warning title="Não é possível ativar sem WhatsApp">
+  Se o WhatsApp não estiver conectado, a ativação mostra a mensagem "Conecte o WhatsApp antes de ativar o Sile."
+</Warning>
+
+## Depois de ativar
+
+Cada conversa pode passar para a equipe a qualquer momento, sem desligar o Sile para os outros pacientes. Veja [Como assumir um atendimento](/atendimento/assumir-conversa).

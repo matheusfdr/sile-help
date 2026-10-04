@@ -1,0 +1,64 @@
+---
+import '../styles/help.css';
+import DocsHeader from '../components/layout/DocsHeader.astro';
+import Footer from '../components/layout/Footer.astro';
+import ScreenshotDialog from '../components/docs/ScreenshotDialog.astro';
+import { site } from '../config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Pathname used for canonical and og:url (defaults to the current one). */
+  path?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  search?: boolean;
+  currentUrl?: string;
+  jsonLd?: Record<string, unknown>[];
+  modified?: string;
+}
+const { title, description = site.description, path = Astro.url.pathname, ogType = 'website', noindex = false, search = true, currentUrl, jsonLd = [], modified } = Astro.props;
+const fullTitle = title ? `${title} · ${site.title}` : `${site.title}`;
+const canonical = site.url + (path === '/' ? '' : path.replace(/\/+$/, '').replace(/\.html$/, ''));
+const ogImage = `${site.url}/og.png`;
+---
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : null}
+    <meta name="theme-color" content="#FFFFFF" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title || site.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Central de Ajuda do Sile" />
+    {modified ? <meta property="article:modified_time" content={modified} /> : null}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title || site.title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <DocsHeader search={search} currentUrl={currentUrl} />
+    <main class="help-main" id="conteudo" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <ScreenshotDialog />
+  </body>
+</html>

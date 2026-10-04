@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DocsSidebar from '../components/layout/DocsSidebar.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import { getCategories } from '../lib/articles';
+import { site } from '../config/site';
+
+export async function getStaticPaths() {
+  const categories = await getCategories();
+  return categories.map((c) => ({ params: { category: c.id }, props: { id: c.id } }));
+}
+const category = (await getCategories()).find((c) => c.id === Astro.props.id)!;
+const tone = { tutorial: 'brand', conceito: 'info', referencia: 'neutral', solucao: 'warning' } as const;
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'CollectionPage', name: category.label, description: category.description, inLanguage: site.lang, url: site.url + category.url,
+  hasPart: category.articles.map((a) => ({ '@type': 'TechArticle', headline: a.title, url: site.url + a.url })),
+}];
+---
+<BaseLayout title={category.label} description={category.description} path={category.url} jsonLd={jsonLd}>
+  <div class="docs docs--no-toc">
+    <aside class="docs__sidebar" aria-label="Navegação">
+      <DocsSidebar currentCategory={category.id} />
+    </aside>
+    <div class="docs__content">
+      <div class="article">
+        <Breadcrumbs items={[{ label: 'Central de Ajuda', href: '/' }, { label: category.label }]} />
+        <header class="cat-head">
+          <span class="cat-head__icon"><Icon name={category.icon} size={24} /></span>
+          <h1 class="article__title">{category.label}</h1>
+          <p class="article__lead">{category.description}</p>
+        </header>
+        {category.topics.map((topic) => (
+          <section class="topic-block" aria-labelledby={`t-${topic.id}`}>
+            {category.topics.length > 1 || topic.label !== category.label ? <h2 id={`t-${topic.id}`}>{topic.label}</h2> : <h2 id={`t-${topic.id}`} class="sr-only">{topic.label}</h2>}
+            <ul class="article-list">
+              {topic.articles.map((a) => (
+                <li>
+                  <a href={a.url}>
+                    <span class="article-list__main"><b>{a.title}</b><small>{a.description}</small></span>
+                    <span class:list={['h-tag', tone[a.type] !== 'neutral' && `h-tag--${tone[a.type]}`]}>{a.typeLabel}</span>
+                    <Icon name="chevron-right" size={16} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

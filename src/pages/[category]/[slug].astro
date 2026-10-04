@@ -1,0 +1,86 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DocsSidebar from '../../components/layout/DocsSidebar.astro';
+import Breadcrumbs from '../../components/layout/Breadcrumbs.astro';
+import TableOfContents from '../../components/layout/TableOfContents.astro';
+import RelatedArticles from '../../components/docs/RelatedArticles.astro';
+import ArticleFeedback from '../../components/docs/ArticleFeedback.astro';
+import SupportCta from '../../components/docs/SupportCta.astro';
+import Icon from '../../components/Icon.astro';
+import { mdxComponents } from '../../components/docs';
+import { getArticles, getArticleByUrl, getRelated, getNeighbours, formatDate, isoDate, readingMinutes } from '../../lib/articles';
+import { site } from '../../config/site';
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  return articles.map((a) => ({ params: { category: a.category.id, slug: a.slug }, props: { url: a.url } }));
+}
+
+const article = (await getArticleByUrl(Astro.props.url))!;
+const { Content, headings } = await render(article.entry);
+const related = await getRelated(article);
+const { prev, next } = await getNeighbours(article);
+const minutes = readingMinutes(article.entry.body);
+const crumbs = [{ label: 'Central de Ajuda', href: '/' }, { label: article.category.label, href: `/${article.category.id}` }, { label: article.title }];
+const tagTone = { tutorial: 'brand', conceito: 'info', referencia: 'neutral', solucao: 'warning' }[article.type];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: article.title,
+    description: article.description,
+    inLanguage: site.lang,
+    dateModified: isoDate(article.lastUpdated),
+    url: site.url + article.url,
+    about: { '@type': 'SoftwareApplication', name: 'Sile', applicationCategory: 'BusinessApplication' },
+    publisher: { '@type': 'Organization', name: 'Sile', url: site.marketingUrl },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: c.href ? site.url + (c.href === '/' ? '' : c.href) : site.url + article.url })),
+  },
+];
+---
+<BaseLayout title={article.title} description={article.description} path={article.url} ogType="article" currentUrl={article.url} jsonLd={jsonLd} modified={isoDate(article.lastUpdated)}>
+  <div class:list={['docs', { 'docs--no-toc': headings.filter((h) => h.depth === 2).length < 2 }]}>
+    <aside class="docs__sidebar" aria-label="Navegação">
+      <DocsSidebar currentUrl={article.url} />
+    </aside>
+    <div class="docs__content">
+      <article class="article">
+        <Breadcrumbs items={crumbs} />
+        <header class="article__head">
+          <div><span class:list={['h-tag', tagTone !== 'neutral' && `h-tag--${tagTone}`]}>{article.typeLabel}</span></div>
+          <h1 class="article__title">{article.title}</h1>
+          <p class="article__lead">{article.description}</p>
+          <p class="article__meta">
+            <span>Atualizado em <time datetime={isoDate(article.lastUpdated)}>{formatDate(article.lastUpdated)}</time></span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>{minutes} min de leitura</span>
+          </p>
+        </header>
+        <TableOfContents headings={headings} variant="inline" />
+        <div class="prose">
+          <Content components={mdxComponents} />
+        </div>
+      </article>
+      <div class="article article-end">
+        <RelatedArticles articles={related} />
+        <ArticleFeedback article={article.url} />
+        {prev || next ? (
+          <nav class="pager" aria-label="Mais artigos desta categoria">
+            {prev ? <a href={prev.url} rel="prev"><small><Icon name="arrow-left" size={12} /> Anterior</small><b>{prev.title}</b></a> : null}
+            {next ? <a class="pager__next" href={next.url} rel="next"><small>Próximo <Icon name="arrow-right" size={12} /></small><b>{next.title}</b></a> : null}
+          </nav>
+        ) : null}
+        <SupportCta />
+      </div>
+    </div>
+    <aside class="docs__toc" aria-label="Nesta página">
+      <TableOfContents headings={headings} />
+    </aside>
+  </div>
+</BaseLayout>

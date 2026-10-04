@@ -1,0 +1,32 @@
+{
+  "name": "sile-help",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Central de Ajuda pública do Sile (help.sileai.app).",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "astro dev --port 4400",
+    "build": "astro build",
+    "preview": "astro preview --port 4400",
+    "check": "astro check",
+    "test": "node --test \"tests/**/*.test.mjs\"",
+    "screenshots": "playwright test --config scripts/docs-screenshots/playwright.config.ts",
+    "og": "node scripts/render-og.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.5",
+    "lucide-static": "^1.52.0",
+    "minisearch": "^7.2.0",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.63.0",
+    "typescript": "^6.0.3"
+  }
+}

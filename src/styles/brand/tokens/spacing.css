@@ -1,0 +1,10 @@
+:root{
+--space-0:0;--space-2:2px;--space-4:4px;--space-6:6px;--space-8:8px;--space-10:10px;--space-12:12px;--space-16:16px;--space-20:20px;--space-24:24px;--space-32:32px;--space-40:40px;--space-48:48px;--space-64:64px;
+/* Layout grid (1440 desktop): sidebar 272 + 12 cols × 70 + 11 gutters × 24, 32 safe area */
+--layout-sidebar:272px;--layout-sidebar-collapsed:72px;--layout-columns:12; /* @kind other */
+--layout-column:70px;--layout-gutter:24px;--layout-safe-area:32px;
+--layout-shell-gap:16px;--layout-topbar:64px;--layout-content-max:1440px;
+/* Breakpoints (reference only — media queries cannot read vars): tablet ≤1200, mobile ≤768 */
+--z-sticky:20;--z-sidebar:60;--z-popover:120;--z-overlay:100;--z-toast:200;--z-tooltip:300; /* @kind other */
+--control-h-sm:32px;--control-h-md:40px;--control-h-lg:48px;
+}

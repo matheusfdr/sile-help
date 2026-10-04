@@ -1,0 +1,11 @@
+/* Identidade do Sile: cópia fiel de @sile/brand (repositório principal, packages/brand).
+   Não edite aqui: mude no pacote de marca e copie de novo (ver docs/design.md).
+   São os mesmos tokens servidos publicamente por sileai.app. */
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/radius.css";
+@import "./tokens/elevation.css";
+@import "./tokens/motion.css";
+@import "./tokens/logo.css";

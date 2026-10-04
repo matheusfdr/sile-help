@@ -1,0 +1,9 @@
+---
+// Official Sile symbol as a CSS mask + typeset wordmark, exactly like <Logo> in the product.
+interface Props { size?: number }
+const { size = 26 } = Astro.props;
+---
+<span class="h-logo" style={`--h-logo-h:${size}px`} role="img" aria-label="Sile">
+  <span class="h-logo__mark" aria-hidden="true"></span>
+  <span class="h-logo__word" aria-hidden="true">Sile</span>
+</span>

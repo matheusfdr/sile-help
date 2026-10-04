@@ -1,0 +1,74 @@
+---
+title: Configurar sua clínica
+description: Preencha os dados da clínica, o endereço da unidade e o horário de atendimento que o Sile usa para responder os pacientes.
+type: tutorial
+topic: comecando
+order: 3
+lastUpdated: 2026-10-04
+related:
+  - /comecando/primeiros-passos
+  - /comecando/configurar-servicos
+  - /comecando/conectar-whatsapp
+aliases:
+  - dados da clínica
+  - endereço da clínica
+  - horário de funcionamento
+  - horário de atendimento
+  - telefone da clínica
+  - segmento
+---
+
+Nas etapas **Sua clínica**, **Unidade** e **Agenda** da configuração guiada você informa quem é a clínica, onde fica e quando atende. O Sile usa esses dados para responder perguntas como "onde fica a clínica?" e "qual o horário de funcionamento?".
+
+## Antes de começar
+
+- Você precisa ser **Owner** ou **Admin**.
+- Abra a configuração guiada pelo botão **Começar configuração**, no Início. Veja [Primeiros passos](/comecando/primeiros-passos).
+
+## Como fazer
+
+<Steps>
+  <Step title="Etapa 1: preencha os dados da clínica">
+    O **Nome da clínica** já vem preenchido e é o único campo obrigatório. Complete o **Telefone**, o **E-mail de contato** e escolha o **Segmento** (por exemplo, Odontologia ou Estética e dermatologia). Depois clique em **Salvar e continuar**.
+
+    <Screenshot src="/images/comecando/configurar-clinica-01-sua-clinica.webp" alt="Etapa Sua clínica preenchida com Clínica Aurora, telefone +55 11 90000-0100, e-mail contato@clinicaaurora.example e segmento Odontologia." />
+  </Step>
+  <Step title="Etapa 2: informe a unidade">
+    Preencha **Nome da unidade**, **Endereço**, **Cidade**, **UF** e **Telefone da unidade** e clique em **Salvar e continuar**.
+
+    <Screenshot src="/images/comecando/configurar-clinica-02-unidade.webp" alt="Etapa Unidade preenchida com Unidade Centro, Rua das Flores, 100, Centro, São Paulo, SP, e o aviso de que o Sile usa o endereço para responder onde fica a clínica." />
+  </Step>
+  <Step title="Etapa 6: confira o horário de atendimento">
+    Depois de cadastrar serviços, profissionais e o WhatsApp, a etapa **Agenda** mostra o horário de atendimento da clínica, dia a dia. Para cada dia:
+
+    - ligue ou desligue a chave ao lado do nome do dia;
+    - ajuste o início e o fim do horário;
+    - use **Adicionar horário** para criar mais de um intervalo no mesmo dia, como uma pausa para o almoço;
+    - use o ícone de copiar para aplicar os horários de um dia a todos os dias ativos.
+
+    Clique em **Salvar e continuar** quando terminar.
+
+    <Screenshot src="/images/comecando/configurar-clinica-03-horario.webp" alt="Etapa Agenda com o horário de atendimento da Clínica Aurora: segunda a sexta das 08:00 às 19:00, sábado das 09:00 às 13:00 e domingo sem atendimento." />
+  </Step>
+</Steps>
+
+## O que acontece depois
+
+- O Sile passa a usar o endereço e o horário nas respostas aos pacientes.
+- O horário de atendimento vale para a clínica como um todo. A agenda de cada profissional é configurada separadamente, em **Profissionais**: é ela que define os horários que o Sile oferece para agendamento.
+
+<Warning title="Horário da clínica não é agenda do profissional">
+  Se um profissional atende só às terças, ajuste a disponibilidade dele em Profissionais. O horário da etapa Agenda não bloqueia nem libera horários para agendamento.
+</Warning>
+
+## Onde editar depois
+
+Os mesmos dados ficam em **Configurações**, no grupo Administração do menu:
+
+- **Geral**: nome, telefone, e-mail, segmento, logo, CNPJ e fuso horário da organização;
+- **Unidades**: endereço e telefone de cada unidade;
+- **Atendimento**: horário de atendimento e regras como a mensagem enviada fora do horário.
+
+## Exemplo
+
+Na Clínica Aurora, Ana Martins cadastrou a Unidade Centro, na Rua das Flores, 100, e o horário de segunda a sexta das 8h às 19h e sábado das 9h às 13h. Quando um paciente pergunta se a clínica abre no sábado, o Sile responde com esse horário.

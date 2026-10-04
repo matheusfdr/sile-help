@@ -1,0 +1,68 @@
+---
+title: Adicionar profissionais
+description: Cadastre quem atende na clínica e os serviços de cada profissional, para que a agenda e o Sile ofereçam os horários certos.
+type: tutorial
+topic: comecando
+order: 5
+lastUpdated: 2026-10-04
+related:
+  - /comecando/configurar-servicos
+  - /comecando/conectar-whatsapp
+  - /comecando/configurar-clinica
+aliases:
+  - cadastrar profissional
+  - cadastrar dentista
+  - cadastrar médico
+  - especialidade
+  - quem atende
+---
+
+Na etapa **Profissionais** da configuração guiada você cadastra quem atende e indica quais serviços cada pessoa realiza. Um serviço só pode ser agendado com um profissional que o realiza.
+
+## Antes de começar
+
+- Você precisa ser **Owner** ou **Admin**.
+- Cadastre os serviços primeiro, na etapa anterior. Veja [Configurar serviços](/comecando/configurar-servicos).
+
+## Como fazer
+
+<Steps>
+  <Step title="Preencha nome e especialidade">
+    Na etapa 4, informe o **Nome** do profissional, como "Dra. Camila Rocha", e a **Especialidade**, como "Harmonização orofacial".
+  </Step>
+  <Step title="Marque os serviços que a pessoa realiza">
+    Em **Realiza**, clique nos serviços que o profissional atende. Os selecionados ficam marcados.
+  </Step>
+  <Step title="Clique em Adicionar profissional">
+    O profissional entra na lista abaixo, com os serviços e a disponibilidade inicial.
+
+    <Screenshot src="/images/comecando/adicionar-profissionais-01-formulario.webp" alt="Etapa Profissionais com o nome Dra. Camila Rocha, a especialidade Harmonização orofacial, os serviços Avaliação, Botox, Preenchimento e Consulta de retorno selecionados e o botão Adicionar profissional destacado." />
+  </Step>
+  <Step title="Repita para cada profissional e continue">
+    Quando terminar, clique em **Continuar**. É preciso ter pelo menos um profissional.
+
+    <Screenshot src="/images/comecando/adicionar-profissionais-02-lista.webp" alt="Lista com três profissionais da Clínica Aurora: Dra. Camila Rocha, Dr. Rafael Lima e Dra. Fernanda Alves, cada um com os serviços que realiza e a disponibilidade de segunda a sexta, das 09:00 às 18:00." />
+  </Step>
+</Steps>
+
+## O que acontece depois
+
+Todo profissional criado nesta etapa começa com a disponibilidade de **segunda a sexta, das 9h às 18h**. O Sile e a agenda só oferecem horários dentro dessa disponibilidade.
+
+<Warning title="Ajuste a disponibilidade real">
+  Se alguém atende em outros dias ou horários, ajuste antes de ativar o Sile: abra **Profissionais**, clique no profissional e use a aba **Disponibilidade**. Caso contrário, o Sile pode oferecer horários em que a pessoa não está na clínica.
+</Warning>
+
+## Completar o cadastro depois
+
+Na tela **Profissionais** você também pode informar registro profissional, e-mail, telefone e foto, ver os próximos atendimentos e desativar quem deixou de atender. Profissionais desativados saem da agenda e o Sile para de oferecer horários com eles. Os agendamentos já marcados continuam.
+
+## Exemplo
+
+A Clínica Aurora tem três profissionais:
+
+- **Dra. Camila Rocha**, harmonização orofacial: Avaliação, Botox, Preenchimento e Consulta de retorno;
+- **Dr. Rafael Lima**, clínica geral: Avaliação, Limpeza e Consulta de retorno;
+- **Dra. Fernanda Alves**, dentística estética: Avaliação, Limpeza, Clareamento e Consulta de retorno.
+
+Quando um paciente pede um clareamento, o Sile só oferece horários da Dra. Fernanda Alves, a única que realiza esse serviço.

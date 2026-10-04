@@ -1,0 +1,88 @@
+---
+import Logo from '../Logo.astro';
+import Icon from '../Icon.astro';
+import DocsSearch from './DocsSearch.astro';
+import DocsSidebar from './DocsSidebar.astro';
+import { links, site } from '../../config/site';
+
+interface Props { search?: boolean; currentUrl?: string }
+const { search = true, currentUrl } = Astro.props;
+---
+<header class="help-header">
+  <div class="help-header__inner">
+    <button type="button" class="h-icon-btn h-icon-btn--ghost help-header__menu" aria-label="Abrir navegação" aria-controls="help-drawer" aria-expanded="false" aria-haspopup="dialog" data-drawer-open>
+      <Icon name="menu" size={20} />
+    </button>
+    <a class="help-brand" href="/" aria-label={`${site.title}, página inicial`}>
+      <Logo size={26} />
+      <span class="help-brand__divider" aria-hidden="true"></span>
+      <span class="help-brand__label">{site.shortTitle}</span>
+    </a>
+    <div class="help-header__search">
+      {search ? <DocsSearch id="header-search" shortcut /> : null}
+    </div>
+    {search ? (
+      <button type="button" class="h-icon-btn h-icon-btn--ghost help-header__search-toggle" aria-label="Buscar na Central de Ajuda" aria-expanded="false" aria-controls="help-search-panel" data-search-toggle>
+        <Icon name="search" size={20} />
+      </button>
+    ) : <span class="help-header__search-toggle" aria-hidden="true"></span>}
+    <div class="help-header__actions">
+      <a class="h-btn h-btn--ghost h-btn--sm help-header__support" href={links.support}>Falar com o suporte</a>
+      <a class="h-btn h-btn--primary h-btn--sm" href={links.app} data-track="go_to_app">
+        <span class="help-header__app-long">Ir para o Sile</span><span class="help-header__app-short">Sile</span>
+        <Icon name="arrow-up-right" size={14} />
+      </a>
+    </div>
+  </div>
+</header>
+{search ? (
+  <div class="help-search-panel" id="help-search-panel" hidden data-search-panel-mobile>
+    <DocsSearch id="mobile-search" />
+  </div>
+) : null}
+
+<dialog class="help-drawer" id="help-drawer" aria-label="Navegação da Central de Ajuda" data-drawer>
+  <div class="help-drawer__head">
+    <a class="help-brand" href="/" aria-label={`${site.title}, página inicial`}><Logo size={24} /></a>
+    <button type="button" class="h-icon-btn h-icon-btn--ghost" aria-label="Fechar navegação" data-drawer-close><Icon name="x" size={20} /></button>
+  </div>
+  <div class="help-drawer__body">
+    <DocsSidebar currentUrl={currentUrl} />
+    <div class="help-drawer__actions">
+      <a class="h-btn h-btn--secondary" href={links.support}><Icon name="life-buoy" size={16} />Falar com o suporte</a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  // Mobile navigation drawer (native <dialog>: focus trap, Esc and backdrop for free).
+  const drawer = document.querySelector<HTMLDialogElement>('[data-drawer]');
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-drawer-open]');
+  if (drawer && openBtn) {
+    openBtn.addEventListener('click', () => { drawer.showModal(); openBtn.setAttribute('aria-expanded', 'true'); });
+    drawer.addEventListener('close', () => { openBtn.setAttribute('aria-expanded', 'false'); openBtn.focus(); });
+    drawer.querySelector('[data-drawer-close]')?.addEventListener('click', () => drawer.close());
+    drawer.addEventListener('click', (e) => { if (e.target === drawer) drawer.close(); });
+    const desktop = window.matchMedia('(min-width: 1025px)');
+    desktop.addEventListener('change', (m) => { if (m.matches && drawer.open) drawer.close(); });
+  }
+
+  // Mobile search panel below the header.
+  const toggle = document.querySelector<HTMLButtonElement>('[data-search-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-search-panel-mobile]');
+  const setPanel = (open: boolean) => {
+    if (!toggle || !panel) return;
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) panel.querySelector<HTMLInputElement>('input')?.focus();
+  };
+  toggle?.addEventListener('click', () => setPanel(!!panel?.hidden));
+  panel?.addEventListener('search:dismiss', () => { setPanel(false); toggle?.focus(); });
+
+  // Ctrl K / "/" → the first visible search box; on phones, the panel.
+  document.addEventListener('search:focus', () => {
+    const visible = [...document.querySelectorAll<HTMLInputElement>('[data-search-input]')].find((i) => i.offsetParent !== null && !i.closest('[data-search-panel-mobile]'));
+    if (visible) visible.focus();
+    else setPanel(true);
+  });
+</script>

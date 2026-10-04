@@ -1,0 +1,27 @@
+---
+// Screenshot of the product (always with fictitious data). Images live in public/images/<categoria>/.
+// Width and height are read from the file at build time (no layout shift); a missing file fails the build.
+// Clicking (or Enter) opens the image at full size in a dialog.
+import { join } from 'node:path';
+import { existsSync } from 'node:fs';
+import sharp from 'sharp';
+import Icon from '../Icon.astro';
+
+interface Props { src: string; alt: string; caption?: string; narrow?: boolean; eager?: boolean }
+const { src, alt, caption, narrow = false, eager = false } = Astro.props;
+if (!src.startsWith('/images/')) throw new Error(`Screenshot: use um caminho em /images/… (recebido "${src}")`);
+if (!alt || alt.trim().length < 12) throw new Error(`Screenshot ${src}: o texto alternativo precisa descrever a imagem.`);
+const file = join(process.cwd(), 'public', src);
+if (!existsSync(file)) throw new Error(`Screenshot: arquivo não encontrado em public${src}`);
+const { width = 1, height = 1 } = await sharp(file).metadata();
+// Captures are 2x: never show them larger than their CSS size, and keep tall ones (a chat, a
+// drawer) from taking over the page.
+const maxWidth = Math.round(Math.min(width / 2, (narrow ? 520 : 680) * (width / height), narrow ? 420 : 9999));
+---
+<figure class:list={['shot', { 'shot--narrow': narrow }]} style={`--shot-w:${maxWidth}px`}>
+  <button type="button" class="shot__frame" data-zoom={src} data-zoom-alt={alt} data-zoom-caption={caption || alt} aria-label={`Ampliar imagem: ${alt}`}>
+    <img src={src} alt={alt} width={width} height={height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    <span class="shot__zoom" aria-hidden="true"><Icon name="maximize-2" size={12} />Ampliar</span>
+  </button>
+  {caption ? <figcaption>{caption}</figcaption> : null}
+</figure>

@@ -1,0 +1,127 @@
+---
+// Search box (combobox). Without JavaScript it is a plain form that opens /busca?q=…
+import Icon from '../Icon.astro';
+import { getArticles } from '../../lib/articles';
+import { suggested } from '../../data/navigation';
+
+interface Props { id: string; size?: 'md' | 'lg'; placeholder?: string; value?: string; shortcut?: boolean; label?: string }
+const { id, size = 'md', placeholder = 'Buscar na Central de Ajuda…', value = '', shortcut = false, label = 'Buscar na Central de Ajuda' } = Astro.props;
+const all = await getArticles();
+const suggestions = suggested.map((url) => all.find((a) => a.url === url)).filter((a) => !!a);
+---
+<form class:list={['h-search', { 'h-search--lg': size === 'lg' }]} action="/busca" method="get" role="search" data-search data-shortcut={shortcut ? '' : undefined}>
+  <label class="sr-only" for={`${id}-input`}>{label}</label>
+  <div class="h-search__field">
+    <Icon name="search" size={size === 'lg' ? 20 : 16} class="h-search__icon" />
+    <input id={`${id}-input`} class="h-search__input" type="search" name="q" value={value} placeholder={placeholder} autocomplete="off" spellcheck="false"
+      role="combobox" aria-expanded="false" aria-controls={`${id}-panel`} aria-autocomplete="list" enterkeyhint="search" data-search-input />
+    {shortcut ? <kbd class="h-search__kbd" aria-hidden="true">Ctrl K</kbd> : null}
+  </div>
+  <div class="h-search__panel" id={`${id}-panel`} hidden data-search-panel>
+    <div data-search-suggestions>
+      <p class="h-search__head" id={`${id}-sugg-head`}>Sugestões</p>
+      <ul class="h-search__list" role="listbox" aria-labelledby={`${id}-sugg-head`}>
+        {suggestions.map((a, i) => (
+          <li role="presentation">
+            <a class="h-search__option" role="option" id={`${id}-s${i}`} href={a.url} aria-selected="false" data-option>
+              <span class="h-search__path">{a.topic.label === a.category.label ? a.category.label : `${a.category.label} › ${a.topic.label}`}</span>
+              <b>{a.title}</b>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div data-search-results hidden>
+      <p class="h-search__head" id={`${id}-res-head`}>Resultados</p>
+      <ul class="h-search__list" role="listbox" aria-labelledby={`${id}-res-head`} data-search-list></ul>
+      <p class="h-search__empty" data-search-empty hidden></p>
+      <a class="h-search__all" href="/busca" data-search-all data-option role="option" aria-selected="false">Ver todos os resultados<Icon name="arrow-right" size={14} /></a>
+    </div>
+    <p class="sr-only" aria-live="polite" data-search-status></p>
+  </div>
+</form>
+
+<script>
+  import { search, highlight, loadEngine } from '../../scripts/search-engine';
+
+  function setup(root: HTMLFormElement) {
+    const input = root.querySelector<HTMLInputElement>('[data-search-input]')!;
+    const panel = root.querySelector<HTMLElement>('[data-search-panel]')!;
+    const sugg = root.querySelector<HTMLElement>('[data-search-suggestions]')!;
+    const results = root.querySelector<HTMLElement>('[data-search-results]')!;
+    const list = root.querySelector<HTMLUListElement>('[data-search-list]')!;
+    const empty = root.querySelector<HTMLElement>('[data-search-empty]')!;
+    const all = root.querySelector<HTMLAnchorElement>('[data-search-all]')!;
+    const status = root.querySelector<HTMLElement>('[data-search-status]')!;
+    const prefix = input.id.replace(/-input$/, '');
+    let active = -1;
+    let seq = 0;
+    let timer: number | undefined;
+
+    const options = () => [...panel.querySelectorAll<HTMLAnchorElement>('[data-option]')].filter((o) => !o.closest('[hidden]'));
+    const setActive = (i: number) => {
+      const opts = options();
+      active = opts.length ? (i + opts.length) % opts.length : -1;
+      opts.forEach((o, k) => o.setAttribute('aria-selected', String(k === active)));
+      if (active >= 0) { input.setAttribute('aria-activedescendant', opts[active].id); opts[active].scrollIntoView({ block: 'nearest' }); }
+      else input.removeAttribute('aria-activedescendant');
+    };
+    const open = () => { panel.hidden = false; input.setAttribute('aria-expanded', 'true'); };
+    const close = () => { panel.hidden = true; input.setAttribute('aria-expanded', 'false'); setActive(-1); };
+
+    const render = async () => {
+      const q = input.value.trim();
+      root.classList.toggle('h-search--filled', !!input.value);
+      const mine = ++seq;
+      if (q.length < 2) { sugg.hidden = false; results.hidden = true; status.textContent = ''; setActive(-1); return; }
+      let hits;
+      try { hits = await search(q, 6); } catch {
+        if (mine !== seq) return;
+        sugg.hidden = true; results.hidden = false; list.innerHTML = ''; empty.hidden = false; all.hidden = true;
+        empty.textContent = 'Não foi possível carregar a busca. Verifique a conexão e tente de novo.';
+        return;
+      }
+      if (mine !== seq) return;
+      sugg.hidden = true; results.hidden = false;
+      list.innerHTML = hits.map((h, i) => `<li role="presentation"><a class="h-search__option" role="option" id="${prefix}-r${i}" href="${h.url}" aria-selected="false" data-option>
+        <span class="h-search__path">${highlight(h.path, [])}</span><b>${highlight(h.title, h.terms)}</b><small>${highlight(h.description, h.terms)}</small></a></li>`).join('');
+      empty.hidden = hits.length > 0;
+      empty.innerHTML = hits.length ? '' : `Nenhum artigo encontrado para <b>“${highlight(q, [])}”</b>. Tente outras palavras, como o nome da tela ou do botão.`;
+      all.hidden = !hits.length;
+      all.href = `/busca?q=${encodeURIComponent(q)}`;
+      all.id = `${prefix}-all`;
+      status.textContent = hits.length ? `${hits.length} ${hits.length === 1 ? 'resultado' : 'resultados'}` : 'Nenhum resultado';
+      setActive(-1);
+    };
+
+    input.addEventListener('focus', () => { loadEngine().catch(() => {}); open(); render(); });
+    input.addEventListener('input', () => { open(); window.clearTimeout(timer); timer = window.setTimeout(render, 90); });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); open(); setActive(active + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); open(); setActive(active - 1); }
+      else if (e.key === 'Enter') {
+        const opts = options();
+        if (active >= 0 && opts[active]) { e.preventDefault(); window.location.href = opts[active].href; }
+        else if (!input.value.trim()) e.preventDefault();
+      } else if (e.key === 'Escape') {
+        if (!panel.hidden) { e.preventDefault(); close(); }
+        else if (input.value) { input.value = ''; render(); }
+        else root.dispatchEvent(new CustomEvent('search:dismiss', { bubbles: true }));
+      }
+    });
+    panel.addEventListener('mousedown', (e) => e.preventDefault()); // keep focus in the input while clicking
+    document.addEventListener('pointerdown', (e) => { if (!root.contains(e.target as Node)) close(); });
+    input.addEventListener('blur', () => window.setTimeout(() => { if (!root.contains(document.activeElement)) close(); }, 0));
+  }
+
+  document.querySelectorAll<HTMLFormElement>('[data-search]').forEach(setup);
+
+  // Ctrl/⌘ K or "/" focus the search (the header one on desktop, the panel on phones).
+  document.addEventListener('keydown', (e) => {
+    const typing = (e.target as HTMLElement).closest('input, textarea, select, [contenteditable="true"]');
+    const combo = (e.key === 'k' || e.key === 'K') && (e.ctrlKey || e.metaKey);
+    if (!combo && (e.key !== '/' || typing)) return;
+    e.preventDefault();
+    document.dispatchEvent(new CustomEvent('search:focus'));
+  });
+</script>

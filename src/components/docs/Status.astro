@@ -1,0 +1,6 @@
+---
+// A status exactly as it appears in the product (pill + colour), for reference tables and text.
+interface Props { tone?: 'neutral' | 'success' | 'warning' | 'danger' | 'info' | 'brand' }
+const { tone = 'neutral' } = Astro.props;
+---
+<span class:list={['ui-status', tone !== 'neutral' && `ui-status--${tone}`]}><slot /></span>

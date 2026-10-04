@@ -1,0 +1,74 @@
+---
+title: Como assumir um atendimento
+description: Saiba como pausar o Sile em uma conversa e continuar o atendimento manualmente, sem afetar as outras conversas.
+type: tutorial
+topic: conversas
+order: 2
+lastUpdated: 2026-10-04
+related:
+  - /atendimento/devolver-para-ia
+  - /atendimento/enviar-mensagem
+  - /atendimento/inbox
+aliases:
+  - assumir conversa
+  - pausar ia na conversa
+  - tirar o robô
+  - atendimento humano
+  - falar com o paciente
+  - parar o sile
+  - transferir para mim
+---
+
+Assumir um atendimento passa a conversa para você. A partir desse momento, o Sile deixa de responder **somente aquela conversa**, e você responde o paciente manualmente. As demais conversas continuam com quem já estava atendendo, inclusive o Sile.
+
+## Antes de começar
+
+- Você precisa ser **Owner**, **Admin** ou **Atendente**.
+- O paciente não recebe nenhum aviso de que a conversa mudou de mãos. Ele continua falando com a clínica pelo mesmo WhatsApp.
+
+## Como fazer
+
+<Steps>
+  <Step title="Abra a conversa na Inbox">
+    No menu lateral, acesse **Atendimento → Inbox** e clique na conversa. Veja [Como abrir uma conversa](/atendimento/abrir-conversa).
+  </Step>
+  <Step title="Clique em Assumir atendimento">
+    Quando o Sile está atendendo, o botão **Assumir atendimento** fica no topo da conversa (1). O mesmo botão aparece no aviso que substitui o campo de mensagem, embaixo.
+
+    <Screenshot src="/images/atendimento/assumir-01-sile-atendendo.webp" alt="Conversa com Mariana Souza com o status Sile está atendendo e o botão Assumir atendimento destacado no topo, com o aviso Sile está atendendo esta conversa no lugar do campo de mensagem." />
+  </Step>
+  <Step title="Confirme que a conversa está com você">
+    O status no topo muda para **Você está atendendo** (1), e a conversa registra "Ana Martins assumiu o atendimento" (2), com o seu nome. O campo de mensagem fica liberado e aparece o aviso "Você assumiu o atendimento".
+
+    <Screenshot src="/images/atendimento/assumir-03-voce-atendendo.webp" alt="Conversa com Mariana Souza depois de assumida: o status Você está atendendo destacado com o número 1, a mensagem Ana Martins assumiu o atendimento destacada com o número 2, o botão Devolver para IA no topo e o campo de mensagem liberado." />
+  </Step>
+</Steps>
+
+## O que acontece depois
+
+- O Sile não responde mais esta conversa até alguém clicar em **Devolver para IA**. Veja [Como devolver uma conversa para a IA](/atendimento/devolver-para-ia).
+- Na lista da Inbox, a conversa passa a mostrar o seu primeiro nome em vez de "Sile" e entra no filtro **Humano atendendo**.
+- Se a conversa estava em **Precisa de atenção**, ela sai desse filtro.
+- O fato fica registrado no histórico do contato.
+
+<Callout title="A IA continua nas outras conversas">
+  Assumir uma conversa não pausa o Sile para a clínica. Para desligar o Sile em todas as conversas, um Owner ou Admin muda o status do agente na tela Agente. Veja [Ativar o Sile](/comecando/ativar-o-sile).
+</Callout>
+
+## Conversas transferidas pelo Sile
+
+Quando o Sile transfere uma conversa (por exemplo, por uma dúvida clínica ou porque o paciente pediu para falar com uma pessoa), ela fica **Aguardando atendente** e aparece como **Na fila** na lista. O aviso no lugar do campo de mensagem diz "O Sile transferiu esta conversa para a equipe". Clique em **Assumir atendimento** nesse aviso para atender.
+
+<Screenshot src="/images/atendimento/assumir-04-aguardando-atendente.webp" alt="Conversa com Camila Oliveira, transferida pelo Sile por dúvida clínica, com o status Aguardando atendente e o aviso Aguardando atendente com o botão Assumir atendimento." />
+
+## Conversas de outra pessoa da equipe
+
+Se outra pessoa já está atendendo, o aviso mostra "Lucas está atendendo esta conversa", por exemplo. Você também pode clicar em **Assumir atendimento** para trazer a conversa para você, quando combinado com a equipe.
+
+## Exemplo
+
+Mariana Souza perguntou pelo WhatsApp sobre Botox. O Sile respondeu o preço e ofereceu horários de avaliação, mas Mariana quis saber se podia ir acompanhada de uma amiga. Ana Martins, que acompanhava a Inbox, assumiu o atendimento e respondeu ela mesma. O Sile continuou atendendo os outros pacientes normalmente.
+
+<Tip>
+  Terminou o que precisava? Devolva a conversa para o Sile continuar o atendimento, por exemplo para oferecer os horários e agendar.
+</Tip>

@@ -1,0 +1,63 @@
+# Central de Ajuda -> branch `help-dist`, que a hospedagem de help.sileai.app puxa (ver docs/publicacao.md).
+# A hospedagem copia os arquivos como estão e não roda build: este workflow gera o site e mantém
+# `help-dist` só com os arquivos prontos (index.html, .htaccess, _astro/…).
+# Sem segredos: publica com o token do próprio workflow.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-help
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Check, build and test
+        run: |
+          npm run check
+          npm run build
+          npm test
+        env:
+          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://help.sileai.app' }}
+          PUBLIC_APP_URL: ${{ vars.PUBLIC_APP_URL || 'https://app.sileai.app' }}
+          PUBLIC_MARKETING_URL: ${{ vars.PUBLIC_MARKETING_URL || 'https://sileai.app' }}
+          PUBLIC_SUPPORT_EMAIL: ${{ vars.PUBLIC_SUPPORT_EMAIL || 'suporte@sileai.app' }}
+          PUBLIC_FEEDBACK_ENDPOINT: ${{ vars.PUBLIC_FEEDBACK_ENDPOINT }}
+
+      # New commit on top of help-dist (no force push, so the host's pull is always a fast-forward).
+      - name: Publish to help-dist
+        env:
+          REPO_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads "$REPO_URL" help-dist >/dev/null; then
+            git clone --depth 1 --branch help-dist "$REPO_URL" out
+          else
+            mkdir out && git -C out init -b help-dist && git -C out remote add origin "$REPO_URL"
+          fi
+          find out -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -r dist/. out/
+          cd out
+          git add -A
+          if git diff --cached --quiet; then echo "Nada mudou."; exit 0; fi
+          git commit -m "Central de Ajuda ${GITHUB_SHA::7}"
+          git push origin help-dist

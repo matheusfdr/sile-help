@@ -1,0 +1,6 @@
+/* Official Sile symbol (assets/logo/sile-symbol.png, trimmed from sile-symbol-original.png; shape untouched).
+   Used as a CSS mask so the symbol renders in a token colour. Never redraw it or change its proportions. */
+:root{
+--logo-symbol:url("../assets/logo/sile-symbol.png"); /* @kind other */
+--logo-symbol-ratio:1016/902; /* @kind other */
+}

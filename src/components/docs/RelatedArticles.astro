@@ -1,0 +1,21 @@
+---
+import type { Article } from '../../lib/articles';
+interface Props { articles: Article[] }
+const { articles } = Astro.props;
+---
+{articles.length ? (
+  <section aria-labelledby="related-title">
+    <h2 class="section-label" id="related-title">Artigos relacionados</h2>
+    <ul class="related">
+      {articles.map((a) => (
+        <li>
+          <a href={a.url}>
+            <span class="related__type">{a.typeLabel} · {a.category.label}</span>
+            <b>{a.title}</b>
+            <small>{a.description}</small>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+) : null}

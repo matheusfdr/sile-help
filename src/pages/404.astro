@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DocsSearch from '../components/layout/DocsSearch.astro';
+---
+<BaseLayout title="Página não encontrada" description="Esta página da Central de Ajuda não existe ou mudou de endereço." noindex search={false}>
+  <section class="home-hero" aria-labelledby="nf-title">
+    <div class="home-hero__inner">
+      <span class="home-hero__overline">Erro 404</span>
+      <h1 id="nf-title">Página não encontrada</h1>
+      <p>O artigo pode ter mudado de endereço. Busque pelo assunto ou volte para o início.</p>
+      <DocsSearch id="nf-search" size="lg" />
+      <a class="h-btn h-btn--secondary" href="/">Ir para o início da Central de Ajuda</a>
+    </div>
+  </section>
+</BaseLayout>

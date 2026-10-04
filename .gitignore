@@ -1,0 +1,25 @@
+# Dependências e build
+node_modules/
+dist/
+.astro/
+
+# Ambiente: nunca versionar valores reais (use .env.example como referência)
+.env
+.env.*
+!.env.example
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+scripts/docs-screenshots/.raw/
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
+npm-debug.log*

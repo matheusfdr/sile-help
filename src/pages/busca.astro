@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DocsSidebar from '../components/layout/DocsSidebar.astro';
+import DocsSearch from '../components/layout/DocsSearch.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+import { links } from '../config/site';
+---
+<BaseLayout title="Busca" description="Resultados da busca na Central de Ajuda do Sile." noindex search={false}>
+  <div class="docs docs--no-toc">
+    <aside class="docs__sidebar" aria-label="Navegação"><DocsSidebar /></aside>
+    <div class="docs__content">
+      <div class="article search-page">
+        <Breadcrumbs items={[{ label: 'Central de Ajuda', href: '/' }, { label: 'Busca' }]} />
+        <h1 class="article__title" data-results-title>Buscar na Central de Ajuda</h1>
+        <DocsSearch id="page-search" size="lg" label="Nova busca" />
+        <p class="sr-only" role="status" data-results-status></p>
+        <ul class="results" data-results></ul>
+        <div class="empty" hidden data-results-empty>
+          <h2>Nenhum artigo encontrado</h2>
+          <p>Tente palavras diferentes, como o nome da tela (Inbox, Agenda) ou do botão que você procura.</p>
+          <a class="h-btn h-btn--secondary" href={links.support}>Falar com o suporte</a>
+        </div>
+        <noscript><p>A busca precisa de JavaScript. Navegue pelas categorias no menu ou volte para a <a href="/">página inicial</a>.</p></noscript>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { search, highlight } from '../scripts/search-engine';
+  const q = new URLSearchParams(location.search).get('q')?.trim() || '';
+  const list = document.querySelector<HTMLUListElement>('[data-results]')!;
+  const empty = document.querySelector<HTMLElement>('[data-results-empty]')!;
+  const title = document.querySelector<HTMLElement>('[data-results-title]')!;
+  const status = document.querySelector<HTMLElement>('[data-results-status]')!;
+  const input = document.querySelector<HTMLInputElement>('#page-search-input');
+  if (input) input.value = q;
+  if (q) {
+    title.textContent = `Resultados para “${q}”`;
+    document.title = `${q} · Busca · Central de Ajuda do Sile`;
+    search(q, 30).then((hits) => {
+      list.innerHTML = hits.map((h) => `<li><a href="${h.url}"><span class="h-search__path">${highlight(h.path, [])} · ${highlight(h.type, [])}</span><b>${highlight(h.title, h.terms)}</b><small>${highlight(h.description, h.terms)}</small></a></li>`).join('');
+      empty.hidden = hits.length > 0;
+      status.textContent = hits.length ? `${hits.length} ${hits.length === 1 ? 'artigo encontrado' : 'artigos encontrados'}` : 'Nenhum artigo encontrado';
+    }, () => { empty.hidden = false; status.textContent = 'Não foi possível carregar a busca.'; });
+  }
+</script>

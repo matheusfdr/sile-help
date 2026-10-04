@@ -1,0 +1,106 @@
+---
+title: Conectar seu WhatsApp
+description: Conecte o número de WhatsApp Business da clínica ao Sile, pela configuração guiada ou pela tela Integrações, e saiba como conferir o status da conexão.
+type: tutorial
+topic: comecando
+order: 6
+lastUpdated: 2026-10-04
+related:
+  - /comecando/ativar-o-sile
+  - /comecando/primeiros-passos
+  - /atendimento/inbox
+aliases:
+  - conectar whatsapp
+  - whatsapp business
+  - meta
+  - número da clínica
+  - status da conexão
+  - whatsapp desconectado
+  - qualidade do número
+---
+
+O Sile atende pelo WhatsApp Business da clínica, o mesmo número que os pacientes já conhecem. A conexão é feita com a sua conta da Meta e leva poucos minutos.
+
+## Antes de começar
+
+- Você precisa ser **Owner** ou **Admin**.
+- Tenha acesso à conta do Facebook da clínica que administra o número do WhatsApp Business.
+
+<Callout title="Conectar não ativa o Sile">
+  Depois de conectado, o número já pode ser usado pela equipe na Inbox, mas o Sile só começa a responder os pacientes quando alguém clica em **Ativar o Sile**. Veja [Ativar o Sile](/comecando/ativar-o-sile).
+</Callout>
+
+## Como conectar
+
+Você pode conectar pela configuração guiada ou, a qualquer momento, pela tela Integrações. O resultado é o mesmo.
+
+<Tabs label="Onde conectar">
+  <Tab label="Configuração guiada">
+    <Steps>
+      <Step title="Abra a etapa WhatsApp">
+        Na configuração guiada, avance até a etapa 5, **WhatsApp**.
+      </Step>
+      <Step title="Clique em Conectar com a Meta">
+        Entre com a conta do Facebook da clínica e escolha o número do WhatsApp Business.
+
+        <Screenshot src="/images/comecando/conectar-whatsapp-03-etapa.webp" alt="Etapa 5 de 9, WhatsApp, com o cartão WhatsApp Business e o botão Conectar com a Meta destacado." />
+      </Step>
+      <Step title="Aguarde a confirmação">
+        Enquanto a Meta confirma, o cartão mostra **Conectando**. Em seguida aparece **Conectado**, com o número e o nome exibido. Clique em **Continuar**.
+
+        <Screenshot src="/images/comecando/conectar-whatsapp-04-conectado.webp" alt="Etapa WhatsApp com o status Conectado, o número +55 11 90000-0100 e o nome Clínica Aurora." />
+      </Step>
+    </Steps>
+    Se ainda não tiver o acesso à conta da Meta, clique em **Fazer depois** e conecte mais tarde pela tela Integrações.
+  </Tab>
+  <Tab label="Tela Integrações">
+    <Steps>
+      <Step title="Abra Integrações">
+        No menu lateral, acesse **Administração → Integrações**.
+      </Step>
+      <Step title="Clique em Conectar no cartão WhatsApp Business">
+        <Screenshot src="/images/comecando/conectar-whatsapp-01-integracoes.webp" alt="Tela Integrações com o cartão WhatsApp Business no status Desconectado e o botão Conectar destacado." />
+      </Step>
+      <Step title="Clique em Continuar com a Meta">
+        A janela explica o que vai acontecer. Clique em **Continuar com a Meta**, entre com a conta do Facebook da clínica e escolha o número.
+
+        <Screenshot src="/images/comecando/conectar-whatsapp-02-modal.webp" alt="Janela Conectar WhatsApp Business explicando que você vai entrar com a conta do Facebook da clínica, com o aviso de que conectar não ativa o Sile e o botão Continuar com a Meta." />
+      </Step>
+      <Step title="Aguarde a confirmação">
+        O cartão passa por **Sincronizando** e depois mostra **Conectado**.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Como verificar o status da conexão
+
+<Steps>
+  <Step title="Abra Integrações">
+    No menu lateral, acesse **Administração → Integrações**. O cartão **WhatsApp Business** mostra o status atual, o número e a qualidade.
+
+    <Screenshot src="/images/comecando/conectar-whatsapp-05-status.webp" alt="Cartão WhatsApp Business conectado, com o número +55 11 90000-0100, qualidade alta e o botão Gerenciar destacado." />
+  </Step>
+  <Step title="Clique em Gerenciar">
+    O painel mostra o número, o nome exibido, a qualidade, o limite de envio, desde quando está conectado e quando chegou a última mensagem. Use **Enviar mensagem de teste** para confirmar que o canal está funcionando.
+
+    <Screenshot src="/images/comecando/conectar-whatsapp-06-detalhes.webp" alt="Painel do WhatsApp Business com status Conectado, número +55 11 90000-0100, nome exibido Clínica Aurora, qualidade Alta, limite de envio de 1.000 conversas por dia e o botão Enviar mensagem de teste." narrow />
+  </Step>
+</Steps>
+
+### Status da conexão
+
+| Status | O que significa |
+| --- | --- |
+| <Status tone="success">Conectado</Status> | O número está funcionando. A equipe envia mensagens e o Sile atende, se estiver ativo. |
+| <Status tone="info">Sincronizando</Status> | A conexão foi iniciada e aguarda a confirmação da Meta. |
+| <Status>Desconectado</Status> | Nenhum número conectado. Ninguém envia nem recebe mensagens pelo Sile. |
+| <Status tone="danger">Erro</Status> | A conexão parou de funcionar. Reconecte em Integrações para voltar a enviar mensagens. |
+
+## O que acontece se o WhatsApp desconectar
+
+Sem o WhatsApp conectado, a equipe não consegue enviar mensagens pela Inbox e o Sile não atende, mesmo que esteja ativo. A configuração do agente é mantida. O Sile avisa no Início, na Inbox e em Integrações, com um atalho para **Ver integrações**.
+
+<Warning title="Desconectar de propósito">
+  O botão **Desconectar**, no painel do WhatsApp Business, interrompe o recebimento e o envio de mensagens por esse número até você conectar de novo. Use só quando for trocar de número.
+</Warning>

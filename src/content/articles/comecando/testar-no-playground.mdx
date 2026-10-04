@@ -1,0 +1,75 @@
+---
+title: Testar o agente no Playground
+description: Converse com o Sile como se fosse um paciente e veja de onde vem cada resposta, sem enviar nada a pacientes reais.
+type: tutorial
+topic: comecando
+order: 8
+lastUpdated: 2026-10-04
+related:
+  - /comecando/configurar-agente
+  - /comecando/ativar-o-sile
+  - /comecando/configurar-servicos
+aliases:
+  - playground
+  - testar ia
+  - simular conversa
+  - diagnóstico
+  - resposta sem fonte
+  - testar respostas
+---
+
+O Playground é um ambiente de teste: você escreve como um paciente e o Sile responde com a configuração atual da clínica. Nada é enviado a pacientes, nenhum horário é reservado e o status do agente não muda.
+
+## Antes de começar
+
+- O Playground está disponível para **Owners** e **Admins**.
+- Cadastre serviços, profissionais e, se possível, a base de conhecimento. O Sile só responde a partir do que está cadastrado.
+
+## Como fazer
+
+<Steps>
+  <Step title="Abra o Playground">
+    No menu lateral, acesse **Inteligência → Agente** e clique em **Testar no playground**. Também é possível abrir pela tela Conhecimento, no botão **Testar respostas**.
+  </Step>
+  <Step title="Escreva como um paciente">
+    Digite no campo **Escreva como paciente…** e envie, ou clique em uma das sugestões, como "Quanto custa?" ou "Quero falar com uma pessoa" (1). O Sile responde em alguns segundos.
+  </Step>
+  <Step title="Confira o diagnóstico de cada resposta">
+    Clique em uma resposta do Sile para ver, no painel **Diagnóstico** (2), como ele chegou até ela.
+
+    <Screenshot src="/images/comecando/testar-03-diagnostico.webp" alt="Playground da Clínica Aurora com uma conversa de teste, as sugestões de mensagem destacadas com o número 1 e o painel Diagnóstico destacado com o número 2." />
+  </Step>
+  <Step title="Ajuste e teste de novo">
+    Se uma resposta não ficou boa, ajuste o que for preciso (serviços, conhecimento ou agente) e use **Reiniciar conversa** para começar do zero.
+  </Step>
+</Steps>
+
+## O que o diagnóstico mostra
+
+| Campo | O que significa |
+| --- | --- |
+| Intenção identificada | O que o Sile entendeu que o paciente quer, como "Preço" ou "Dúvida clínica". |
+| Ferramenta utilizada | O que ele usou para responder, como consultar o conhecimento ou a agenda. |
+| Fonte consultada | De onde veio a informação, como "Serviços › Clareamento". |
+| Informação encontrada | O dado usado na resposta. |
+| Transferência | Se a conversa seria passada para a equipe, e por quê. |
+| Regras aplicadas | Regras de segurança que influenciaram a resposta. |
+| Tempo de resposta | Quanto tempo o Sile levou para responder. |
+
+No fim do painel, um resumo mostra quantas respostas houve, quantas transferências, quantas ficaram sem fonte e o tempo médio.
+
+<Screenshot src="/images/comecando/testar-02-playground.webp" alt="Conversa de teste no Playground: o Sile informa o preço do clareamento com fonte em Serviços, responde sobre convênio com fonte no FAQ e transfere uma dúvida sobre dor depois da limpeza para a equipe." caption="Cada resposta do Sile mostra a fonte logo abaixo do balão." />
+
+<Warning title="Resposta sem fonte">
+  Quando o Sile não encontra a informação, o diagnóstico mostra "Resposta sem fonte". Em vez de improvisar, ele diz que vai chamar alguém da equipe. Considere adicionar a informação à base de conhecimento.
+</Warning>
+
+## Teste na configuração guiada
+
+A etapa 8, **Teste**, da configuração guiada tem uma versão simplificada do Playground. Converse com o Sile e, quando ele tiver respondido, clique em **O Sile respondeu bem** para concluir a etapa. Esse teste é um dos requisitos para ativar o Sile.
+
+<Screenshot src="/images/comecando/testar-01-etapa-teste.webp" alt="Etapa 8 de 9, Teste, com uma conversa em que o Sile informa o preço do clareamento e oferece horários de avaliação com a Dra. Camila Rocha, e o botão O Sile respondeu bem." />
+
+## Exemplo
+
+Antes de ativar o Sile, Ana Martins perguntou no Playground "Estou com dor depois da limpeza, é normal?". O diagnóstico mostrou a intenção "Dúvida clínica", a regra "Não realizar diagnóstico" e a transferência para a equipe. Assim ela confirmou que dúvidas de saúde não seriam respondidas pela IA.

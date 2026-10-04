@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DocsSearch from '../components/layout/DocsSearch.astro';
+import Icon from '../components/Icon.astro';
+import { getCategories, getArticles } from '../lib/articles';
+import { links, site } from '../config/site';
+
+const categories = await getCategories();
+const all = await getArticles();
+const start = ['/comecando/primeiros-passos', '/comecando/conectar-whatsapp', '/comecando/testar-no-playground', '/comecando/ativar-o-sile', '/atendimento/assumir-conversa', '/atendimento/devolver-para-ia']
+  .map((url) => all.find((a) => a.url === url)).filter((a) => !!a);
+const hints = [
+  { label: 'Assumir conversa', q: 'assumir conversa' },
+  { label: 'Conectar WhatsApp', q: 'conectar whatsapp' },
+  { label: 'Ativar o Sile', q: 'ativar' },
+];
+const jsonLd = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: site.title, url: site.url, inLanguage: site.lang,
+  potentialAction: { '@type': 'SearchAction', target: `${site.url}/busca?q={search_term_string}`, 'query-input': 'required name=search_term_string' } }];
+---
+<BaseLayout description={site.description} search={false} currentUrl="/" jsonLd={jsonLd}>
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero__inner">
+      <span class="home-hero__overline">Central de Ajuda do Sile</span>
+      <h1 id="home-title">Como podemos <em>ajudar?</em></h1>
+      <p>Guias passo a passo para configurar a clínica, atender pelo WhatsApp e usar o Sile no dia a dia.</p>
+      <DocsSearch id="home-search" size="lg" placeholder="Buscar: assumir conversa, conectar WhatsApp…" />
+      <p class="home-hero__hints">
+        <span>Experimente:</span>
+        {hints.map((h) => <a href={`/busca?q=${encodeURIComponent(h.q)}`}>{h.label}</a>)}
+      </p>
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="cats-title">
+    <div class="home-section__head"><h2 id="cats-title">Explore por assunto</h2></div>
+    <ul class="cat-grid">
+      {categories.map((c) => (
+        <li>
+          <a class="cat-card" href={c.url}>
+            <span class="cat-card__icon"><Icon name={c.icon} size={20} /></span>
+            <h3>{c.label}</h3>
+            <p>{c.description}</p>
+            <span class="cat-card__foot">{c.articles.length} {c.articles.length === 1 ? 'artigo' : 'artigos'}<Icon name="arrow-right" size={16} /></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {start.length ? (
+    <section class="home-section" aria-labelledby="start-title">
+      <div class="home-section__head"><h2 id="start-title">Comece por aqui</h2></div>
+      <ul class="start-list">
+        {start.map((a) => <li><a href={a.url}><Icon name={a.type === 'tutorial' ? 'list-checks' : 'book-open'} size={18} /><span class="start-list__title">{a.title}</span><Icon name="chevron-right" size={16} /></a></li>)}
+      </ul>
+    </section>
+  ) : null}
+
+  <section class="home-section" aria-labelledby="home-support-title">
+    <div class="home-support">
+      <div>
+        <h2 id="home-support-title">Não encontrou o que procurava?</h2>
+        <p>Escreva para {site.supportEmail}. {site.supportHours}</p>
+      </div>
+      <a class="h-btn h-btn--secondary" href={links.support}><Icon name="life-buoy" size={16} />Falar com o suporte</a>
+    </div>
+  </section>
+</BaseLayout>

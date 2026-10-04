@@ -1,0 +1,59 @@
+---
+title: Como devolver uma conversa para a IA
+description: Devolva uma conversa para o Sile voltar a responder o paciente automaticamente depois de um atendimento humano.
+type: tutorial
+topic: conversas
+order: 3
+lastUpdated: 2026-10-04
+related:
+  - /atendimento/assumir-conversa
+  - /comecando/ativar-o-sile
+  - /atendimento/inbox
+aliases:
+  - devolver para ia
+  - devolver para o sile
+  - voltar para a ia
+  - reativar ia na conversa
+  - liberar conversa
+---
+
+Devolver uma conversa faz o Sile voltar a responder aquele paciente automaticamente. Use quando a parte que precisava de uma pessoa já foi resolvida.
+
+## Antes de começar
+
+- Você precisa ser **Owner**, **Admin** ou **Atendente**.
+- O Sile precisa estar atendendo pacientes (status **Ativo**, com o WhatsApp conectado). Caso contrário, o botão fica desabilitado e mostra "O Sile não está atendendo agora".
+
+## Como fazer
+
+<Steps>
+  <Step title="Abra a conversa">
+    Na Inbox, abra a conversa que está com uma pessoa da equipe. O topo mostra, por exemplo, **Você está atendendo**.
+  </Step>
+  <Step title="Clique em Devolver para IA">
+    O botão fica no topo da conversa.
+
+    <Screenshot src="/images/atendimento/devolver-01-botao.webp" alt="Topo da conversa com Mariana Souza, com o status Você está atendendo e o botão Devolver para IA destacado." />
+  </Step>
+  <Step title="Confirme">
+    Na janela "Devolver para o Sile?", clique em **Devolver para IA**.
+
+    <Screenshot src="/images/atendimento/devolver-02-confirmar.webp" alt="Janela Devolver para o Sile? explicando que o Sile volta a responder Mariana automaticamente e que você pode assumir de novo a qualquer momento, com os botões Cancelar e Devolver para IA." narrow />
+  </Step>
+</Steps>
+
+## O que acontece depois
+
+- O status volta para **Sile está atendendo** e a conversa registra "Ana Martins devolveu a conversa para o Sile", com o nome de quem devolveu.
+- O campo de mensagem é substituído pelo aviso "Sile está atendendo esta conversa", com o botão **Assumir atendimento**, caso alguém precise retomar.
+- As próximas mensagens do paciente são respondidas pelo Sile.
+
+<Screenshot src="/images/atendimento/devolver-03-sile-de-volta.webp" alt="Conversa com Mariana Souza depois da devolução, com o status Sile está atendendo, as mensagens de que Ana Martins assumiu e depois devolveu a conversa para o Sile, e o aviso com o botão Assumir atendimento." />
+
+<Warning title="Quando não dá para devolver">
+  Se o Sile estiver em rascunho, em teste, pausado ou sem WhatsApp conectado, a devolução não é possível e a conversa continua com a equipe. Confira o status em **Inteligência → Agente**. Veja [Ativar o Sile](/comecando/ativar-o-sile).
+</Warning>
+
+## Exemplo
+
+Depois de responder a dúvida de Mariana Souza sobre ir acompanhada, Ana Martins devolveu a conversa para o Sile. Quando Mariana escreveu "Pode ser amanhã às 9h?", o Sile seguiu o atendimento e ofereceu os horários de avaliação com a Dra. Camila Rocha.
