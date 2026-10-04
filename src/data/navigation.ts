@@ -80,6 +80,7 @@ export const categoryById = (id: string) => categories.find((c) => c.id === id)!
 
 /** Articles suggested when the search box is empty (curated, not a popularity ranking). */
 export const suggested = [
+  '/comecando/guia-de-implantacao',
   '/comecando/primeiros-passos',
   '/atendimento/assumir-conversa',
   '/atendimento/inbox',

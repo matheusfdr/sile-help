@@ -29,6 +29,8 @@ const CASES = [
   ['preço a partir de', '/comecando/configurar-servicos'],
   ['notas internas', '/atendimento/informacoes-do-contato'],
   ['configuracao guiada', '/comecando/primeiros-passos'],
+  ['material de onboarding', '/comecando/guia-de-implantacao'],
+  ['implantação', '/comecando/guia-de-implantacao'],
 ];
 
 test('buscas comuns encontram o artigo certo entre os 3 primeiros', { skip: !existsSync(INDEX) && 'rode npm run build antes' }, () => {

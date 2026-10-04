@@ -16,7 +16,7 @@ if (!existsSync(file)) throw new Error(`Screenshot: arquivo não encontrado em p
 const { width = 1, height = 1 } = await sharp(file).metadata();
 // Captures are 2x: never show them larger than their CSS size, and keep tall ones (a chat, a
 // drawer) from taking over the page.
-const maxWidth = Math.round(Math.min(width / 2, (narrow ? 520 : 680) * (width / height), narrow ? 420 : 9999));
+const maxWidth = Math.round(Math.min(width / 2, (narrow ? 680 : 680) * (width / height), narrow ? 440 : 9999));
 ---
 <figure class:list={['shot', { 'shot--narrow': narrow }]} style={`--shot-w:${maxWidth}px`}>
   <button type="button" class="shot__frame" data-zoom={src} data-zoom-alt={alt} data-zoom-caption={caption || alt} aria-label={`Ampliar imagem: ${alt}`}>

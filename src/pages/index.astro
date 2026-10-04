@@ -7,7 +7,7 @@ import { links, site } from '../config/site';
 
 const categories = await getCategories();
 const all = await getArticles();
-const start = ['/comecando/primeiros-passos', '/comecando/conectar-whatsapp', '/comecando/testar-no-playground', '/comecando/ativar-o-sile', '/atendimento/assumir-conversa', '/atendimento/devolver-para-ia']
+const start = ['/comecando/guia-de-implantacao', '/comecando/primeiros-passos', '/comecando/conectar-whatsapp', '/comecando/testar-no-playground', '/comecando/ativar-o-sile', '/atendimento/assumir-conversa', '/atendimento/devolver-para-ia']
   .map((url) => all.find((a) => a.url === url)).filter((a) => !!a);
 const hints = [
   { label: 'Assumir conversa', q: 'assumir conversa' },
