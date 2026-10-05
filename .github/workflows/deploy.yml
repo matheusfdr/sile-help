@@ -1,7 +1,6 @@
-# Central de Ajuda -> branch `help-dist`, que a hospedagem de help.sileai.app puxa (ver docs/publicacao.md).
-# A hospedagem copia os arquivos como estão e não roda build: este workflow gera o site e mantém
-# `help-dist` só com os arquivos prontos (index.html, .htaccess, _astro/…).
-# Sem segredos: publica com o token do próprio workflow.
+# Central de Ajuda -> help.sileai.app (GitHub Pages) e branch `help-dist` (cópia pronta para
+# qualquer hospedagem estática que puxe por Git). Ver docs/publicacao.md.
+# Sem segredos: usa o token do próprio workflow.
 name: Deploy
 
 on:
@@ -15,9 +14,11 @@ concurrency:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -42,7 +43,11 @@ jobs:
           PUBLIC_SUPPORT_EMAIL: ${{ vars.PUBLIC_SUPPORT_EMAIL || 'suporte@sileai.app' }}
           PUBLIC_FEEDBACK_ENDPOINT: ${{ vars.PUBLIC_FEEDBACK_ENDPOINT }}
 
-      # New commit on top of help-dist (no force push, so the host's pull is always a fast-forward).
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      # Same files on help-dist (new commit on top, no force push).
       - name: Publish to help-dist
         env:
           REPO_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
@@ -61,3 +66,13 @@ jobs:
           if git diff --cached --quiet; then echo "Nada mudou."; exit 0; fi
           git commit -m "Central de Ajuda ${GITHUB_SHA::7}"
           git push origin help-dist
+
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
