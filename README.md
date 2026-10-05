@@ -61,7 +61,7 @@ Veja [.env.example](.env.example). Nenhuma é secreta. `PUBLIC_SITE_URL` define 
 
 ## Publicação
 
-O build gera um site estático em `dist/`, com `.htaccess` para URLs limpas (o mesmo modelo de sileai.app). O workflow `.github/workflows/deploy.yml` publica o resultado no branch `help-dist`, pronto para a hospedagem puxar. Veja [docs/publicacao.md](docs/publicacao.md).
+O site é publicado pelo GitHub Pages em **help.sileai.app** (DNS na Hostinger, registro CNAME `help`). A cada push na `main`, o workflow `.github/workflows/deploy.yml` verifica, gera e publica o site, e grava a mesma cópia no branch `help-dist`. Veja [docs/publicacao.md](docs/publicacao.md).
 
 ## Licença
 

@@ -1,25 +1,28 @@
 # Publicação em help.sileai.app
 
-O build é um site estático (`dist/`). O modelo é o mesmo do site institucional: uma hospedagem que serve arquivos e um `.htaccess` para URLs limpas.
+A Central de Ajuda é um site estático publicado pelo **GitHub Pages**, com o domínio `help.sileai.app`. O plano da Hostinger não permite subdomínios ativos no `sileai.app`, por isso a hospedagem é o GitHub. O DNS continua na Hostinger.
 
-## Fluxo preparado
+## Fluxo
 
 1. Push na `main` dispara `.github/workflows/deploy.yml`.
 2. O workflow instala, roda `npm run check`, `npm run build` e `npm test`.
-3. O conteúdo de `dist/` é publicado como um commit novo no branch `help-dist` (sem force push).
-4. A hospedagem puxa `help-dist` para a pasta do subdomínio.
+3. O `dist/` é publicado no GitHub Pages e, também, como um commit no branch `help-dist` (cópia pronta para qualquer hospedagem estática que puxe por Git).
 
-Nenhum segredo é necessário: o workflow usa o token do próprio GitHub Actions.
+Nenhum segredo é necessário. Para publicar de novo sem mudar nada: *Actions › Deploy › Run workflow*.
 
-## O que falta para ir ao ar
+## Configuração (feita uma vez)
 
-- Criar o subdomínio `help.sileai.app` na hospedagem e apontar o DNS.
-- Configurar a implantação por Git da hospedagem para o branch `help-dist` deste repositório.
-- Ativar o SSL do subdomínio.
-- Opcional: definir as variáveis do repositório (Settings → Secrets and variables → Actions → Variables): `PUBLIC_SITE_URL`, `PUBLIC_APP_URL`, `PUBLIC_MARKETING_URL`, `PUBLIC_SUPPORT_EMAIL` e `PUBLIC_FEEDBACK_ENDPOINT`.
+- GitHub: *Settings › Pages*: fonte **GitHub Actions**, domínio personalizado `help.sileai.app`, **Enforce HTTPS** ligado depois que o certificado sair.
+- Hostinger: em *Domínios › sileai.app › DNS*, um registro **CNAME** com nome `help` apontando para `matheusfdr.github.io`.
+- Recomendado: verificar o domínio `sileai.app` em *GitHub › Settings (da conta) › Pages › Add a domain* (um registro TXT no DNS). Isso impede que outra conta do GitHub use subdomínios do `sileai.app`.
+
+## URLs
+
+O GitHub Pages serve `/atendimento/inbox` a partir de `atendimento/inbox.html`, como o site institucional: sem `.html` e sem barra no fim. A página `404.html` é usada para endereços inexistentes. O `public/.htaccess` só vale numa hospedagem Apache (Hostinger), não no GitHub Pages.
 
 ## Verificação depois de publicar
 
-- `https://help.sileai.app` abre a página inicial; `/atendimento/assumir-conversa` abre sem `.html` e sem barra no fim.
-- `https://help.sileai.app/sitemap-index.xml` e `/robots.txt` respondem.
+- `https://help.sileai.app` abre a página inicial; `/atendimento/assumir-conversa` abre sem `.html`.
+- `https://help.sileai.app/sitemap-index.xml`, `/robots.txt` e `/search-index.json` respondem.
 - Uma URL inexistente mostra a página 404 da Central.
+- `http://` redireciona para `https://`.
