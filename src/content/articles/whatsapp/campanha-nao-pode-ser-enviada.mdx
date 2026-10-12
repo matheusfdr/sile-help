@@ -1,0 +1,44 @@
+---
+title: Não consigo confirmar uma campanha
+description: O que fazer quando o botão de confirmar uma campanha está bloqueado ou o Sile recusa o envio, com as causas mais comuns e como resolver cada uma.
+type: solucao
+topic: campanhas
+order: 6
+lastUpdated: 2026-10-12
+related:
+  - /whatsapp/criar-campanha
+  - /whatsapp/publico-da-campanha
+  - /whatsapp/enviar-ou-agendar-campanha
+aliases:
+  - campanha não envia
+  - botão confirmar desabilitado
+  - erro ao enviar campanha
+  - todos excluídos
+  - público mudou
+---
+
+## Sintoma
+
+Na etapa **Revisão**, o botão **Confirmar envio** ou **Confirmar agendamento** está bloqueado, ou aparece uma mensagem ao confirmar.
+
+## O que verificar
+
+O quadro **Antes de confirmar**, na Revisão, lista o que está impedindo o envio. Encontre a mensagem na tabela abaixo.
+
+| Mensagem | Causa | Como resolver |
+| --- | --- | --- |
+| Escolha o público | Nenhum filtro foi escolhido | Na etapa **Público**, escolha filtros, contatos ou **Todos os contatos ativos** |
+| Nenhum contato corresponde a estes filtros | Os filtros não encontraram ninguém | Ajuste os filtros. Lembre que, entre filtros diferentes, o contato precisa atender a todos |
+| Todos os contatos encontrados estão excluídos | Todos pediram para não receber, não têm número ou não têm nome | Veja os motivos no quadro **Público**. Veja [Público de uma campanha](/whatsapp/publico-da-campanha) |
+| Só modelos aprovados podem ser usados em campanhas | O modelo escolhido não está aprovado | Escolha um modelo aprovado ou aguarde a aprovação em **WhatsApp → Modelos** |
+| Preencha a variável… do modelo | O modelo tem uma informação (como o serviço) sem valor | Na etapa **Mensagem**, preencha o campo indicado |
+| O WhatsApp da clínica não está conectado | O número está desconectado | Conecte em **Administração → Integrações**. Veja [Como conectar o WhatsApp](/comecando/conectar-whatsapp) |
+| Agora é horário de silêncio | Você escolheu **Enviar agora** dentro do período de silêncio | Agende para depois do fim do período ou mude o horário de silêncio da campanha |
+| O horário escolhido cai no horário de silêncio | O agendamento está dentro do período de silêncio | Escolha outro horário |
+| O público mudou desde a revisão | Contatos entraram ou saíram entre a revisão e a confirmação | Revise o novo número e confirme de novo |
+| O plano ou a assinatura atual não permite enviar campanhas | O teste gratuito terminou ou a assinatura está inativa | O Owner confere em **Administração → Configurações → Plano e cobrança** |
+| Os botões Nova campanha e Confirmar não aparecem | Seu perfil é Atendente ou Visualizador: esses perfis só acompanham as campanhas | Peça a um Owner ou Admin para criar e confirmar |
+
+## Quando falar com o suporte
+
+Se nenhuma das causas se aplica, escreva para suporte@sileai.app com o nome da campanha e a mensagem que aparece na tela.

@@ -4,7 +4,7 @@ Regras para todos os artigos da Central de Ajuda. Elas também valem para quem r
 
 ## Escopo
 
-- Documentamos **só o painel da clínica**: Início, Inbox, Contatos, Pipeline, Agenda, Serviços, Profissionais, Automações, Agente, Conhecimento, Modelos, Relatórios, Equipe, Integrações, Configurações, configuração guiada e Minha conta.
+- Documentamos **só o painel da clínica**: Início, Inbox, Contatos, Pipeline, Agenda, Serviços, Profissionais, Automações, Agente, Conhecimento, Campanhas, Modelos, Relatórios, Equipe, Integrações, Configurações, configuração guiada e Minha conta.
 - **Nunca** documentamos ferramentas internas da equipe Sile, infraestrutura, fornecedores, credenciais, limites internos ou como o produto é construído. Os testes (`tests/content.test.mjs`) recusam termos desse tipo.
 - O produto é a fonte da verdade. Se o produto e o texto divergirem, o texto se adapta e a divergência é registrada para o time de produto (no repositório privado do produto, nunca aqui). Nada de documentar o que ainda não existe.
 

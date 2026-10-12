@@ -47,6 +47,17 @@ Sile local (dataset Clínica Aurora)
 | --- | --- |
 | `comecando.spec.ts` | Começando: configuração guiada completa (estágio em implantação), Integrações, Agente e Playground |
 | `atendimento.spec.ts` | Atendimento: Inbox, abrir, assumir, devolver, enviar mensagens, anexos e dados do contato |
+| `campanhas.spec.ts` | WhatsApp → Campanhas: lista, as cinco etapas de uma campanha, público e exclusões, agendamento, confirmação, resultados e "Criar campanha" em Contatos |
+
+## Campanhas
+
+As telas de Campanhas só existem com o servidor do Sile ligado (não há campanhas no modo de documentação sem servidor). Para o `campanhas.spec.ts`:
+
+1. No repositório do produto, com os serviços locais e o banco migrado, prepare a Clínica Aurora no banco local (script de preparação da documentação do repositório do produto; mesmo elenco, senha `documentacao`, campanhas descritas em [docs/dataset.md](../../docs/dataset.md)).
+2. Suba o servidor do Sile e o app conectado a ele na porta 5174 (no app: `VITE_SILE_AUTH=api npx vite --port 5174 --strictPort`).
+3. Rode `npm run screenshots -- campanhas`.
+
+O spec não confirma nem salva nada: ele só edita o rascunho na tela, então pode rodar de novo com os mesmos dados. Muitos logins seguidos da mesma conta batem no limite de tentativas de entrada; espere alguns minutos entre execuções completas.
 
 ## Padrão visual dos destaques
 

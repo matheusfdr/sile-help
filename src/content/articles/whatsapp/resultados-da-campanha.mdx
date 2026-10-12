@@ -1,0 +1,88 @@
+---
+title: Resultados de uma campanha
+description: Entenda os números de uma campanha, a situação de cada destinatário, os status da campanha e os motivos de quem não recebeu a mensagem.
+type: referencia
+topic: campanhas
+order: 5
+lastUpdated: 2026-10-12
+related:
+  - /whatsapp/campanhas
+  - /whatsapp/enviar-ou-agendar-campanha
+  - /whatsapp/campanha-nao-pode-ser-enviada
+aliases:
+  - relatório da campanha
+  - mensagens lidas
+  - mensagens entregues
+  - taxa de leitura
+  - quem recebeu a campanha
+  - falha no envio
+---
+
+Ao abrir uma campanha em **WhatsApp → Campanhas**, você vê os números do envio, quem recebeu e quem ficou de fora. Os números vêm das próprias mensagens e atualizam sozinhos enquanto a campanha está enviando e nos dias seguintes, conforme os pacientes recebem e leem.
+
+## Números da campanha
+
+<Screenshot src="/images/whatsapp/resultados-01-metricas.webp" alt="Campanha Retorno de outubro concluída, com os números destacados com o número 1: 12 selecionados, 10 elegíveis, 2 excluídos, 0 na fila, 9 enviadas (90% dos elegíveis), 8 entregues (88,9% das enviadas), 5 lidas (62,5% das entregues) e 1 falha." />
+
+| Número | O que conta |
+| --- | --- |
+| Selecionados | Todos os contatos do público no momento da confirmação |
+| Elegíveis | Os que podiam receber |
+| Excluídos | Os que ficaram de fora na confirmação (veja os motivos abaixo) |
+| Na fila | Mensagens que ainda vão sair ou aguardam o WhatsApp |
+| Enviadas | Mensagens que saíram para o WhatsApp. O percentual é sobre os elegíveis |
+| Entregues | Mensagens que chegaram ao celular do paciente. O percentual é sobre as enviadas |
+| Lidas | Mensagens abertas pelo paciente. O percentual é sobre as entregues |
+| Falhas | Mensagens que o WhatsApp não conseguiu entregar |
+
+Alguns pacientes desativam a confirmação de leitura no WhatsApp. Nesse caso, a mensagem pode ter sido lida e aparecer só como entregue.
+
+## Situação de cada destinatário
+
+Em **Destinatários**, cada contato aparece com a situação da mensagem dele. Use as abas para filtrar.
+
+<Screenshot src="/images/whatsapp/resultados-02-destinatarios.webp" alt="Lista Destinatários da campanha Retorno de outubro com as abas Todos 12, Lidas 5, Entregues 3, Enviadas 1, Falhas 1 e Excluídos 2, e os contatos Juliana Costa, Felipe Martins, Beatriz Ramos, Gustavo Pereira e Larissa Nunes com a situação Lida e Thiago Carvalho, Patrícia Melo e Bruno Azevedo com a situação Entregue." />
+
+| Situação | O que significa |
+| --- | --- |
+| <Status>Aguardando envio</Status> | Ainda não chegou a vez deste contato |
+| <Status>Na fila</Status> | A mensagem foi criada e está sendo enviada ao WhatsApp |
+| <Status tone="info">Enviada</Status> | O WhatsApp recebeu a mensagem |
+| <Status tone="success">Entregue</Status> | A mensagem chegou ao celular do paciente |
+| <Status tone="success">Lida</Status> | O paciente abriu a mensagem |
+| <Status tone="danger">Falhou</Status> | O WhatsApp não entregou (veja o motivo) |
+| <Status tone="warning">Não enviada</Status> | Na hora do envio, o contato não podia mais receber (por exemplo, pediu para parar depois da confirmação) |
+| <Status>Cancelada</Status> | A campanha foi cancelada ou interrompida antes da vez deste contato |
+| <Status>Excluído</Status> | O contato ficou de fora na confirmação |
+
+Para proteger os pacientes, a lista mostra só o nome e os quatro últimos dígitos do telefone.
+
+## Quem não recebeu
+
+O quadro **Quem não recebeu** agrupa os motivos.
+
+<Screenshot src="/images/whatsapp/resultados-03-motivos.webp" alt="Quadro Quem não recebeu da campanha Retorno de outubro: excluídos na confirmação, Pediu para não receber mensagens 1 e Sem número de WhatsApp 1; falhas na entrega, Número não recebe mensagens do WhatsApp 1." />
+
+| Motivo | O que fazer |
+| --- | --- |
+| Pediu para não receber mensagens | Nada: o pedido do paciente é respeitado em todas as campanhas |
+| Sem número de WhatsApp | Complete o telefone no cadastro do contato |
+| Sem dados para as variáveis do modelo | Corrija o nome do contato no cadastro |
+| Número não recebe mensagens do WhatsApp | Confira o número com o paciente |
+| Modelo recusado pelo WhatsApp | Revise o modelo em **WhatsApp → Modelos** |
+| Limite de envio do WhatsApp atingido | Envie em outro momento ou para um público menor |
+
+## Status da campanha
+
+| Status | O que significa |
+| --- | --- |
+| <Status>Rascunho</Status> | Em preparação. Nada foi enviado |
+| <Status tone="info">Agendada</Status> | Confirmada, aguardando o horário |
+| <Status tone="info">Enviando</Status> | As mensagens estão saindo em lotes |
+| <Status tone="success">Concluída</Status> | Todos os destinatários foram processados. Entregas e leituras ainda podem chegar |
+| <Status>Cancelada</Status> | Cancelada antes do envio ou interrompida durante |
+| <Status tone="danger">Interrompida</Status> | O envio não pôde continuar (por exemplo, o WhatsApp desconectou). O motivo aparece no topo |
+
+## Respostas dos pacientes
+
+Cada mensagem da campanha fica na conversa do contato, na Inbox, com a indicação "Campanha" e o nome da campanha. Quando um paciente responde, a conversa segue normalmente com o Sile ou com a equipe. Veja [Visão geral da Inbox](/atendimento/inbox).

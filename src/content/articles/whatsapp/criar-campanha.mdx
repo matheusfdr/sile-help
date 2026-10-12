@@ -1,0 +1,75 @@
+---
+title: Como criar uma campanha
+description: Passo a passo para criar uma campanha no Sile, do nome à revisão, escolhendo o público, o modelo de mensagem e as variáveis.
+type: tutorial
+topic: campanhas
+order: 2
+lastUpdated: 2026-10-12
+related:
+  - /whatsapp/campanhas
+  - /whatsapp/publico-da-campanha
+  - /whatsapp/enviar-ou-agendar-campanha
+aliases:
+  - nova campanha
+  - fazer disparo
+  - enviar mensagem para vários pacientes
+  - criar disparo
+  - mandar promoção
+---
+
+Uma campanha é criada em cinco etapas: **Dados**, **Público**, **Mensagem**, **Envio** e **Revisão**. O rascunho é salvo a cada etapa, então você pode parar e continuar depois. Nada é enviado até você confirmar na última etapa.
+
+## Antes de começar
+
+- Você precisa ser **Owner** ou **Admin**.
+- Tenha pelo menos um modelo aprovado em **WhatsApp → Modelos**. Campanhas usam só modelos aprovados.
+- O WhatsApp da clínica precisa estar conectado para confirmar o envio. Sem ele, você consegue preparar o rascunho, mas não enviar. Veja [Como conectar o WhatsApp](/comecando/conectar-whatsapp).
+
+## Como fazer
+
+<Steps>
+  <Step title="Dê um nome à campanha">
+    No menu lateral, acesse **WhatsApp → Campanhas** e clique em **Nova campanha**. Escreva um nome que a equipe reconheça, como "Retorno de novembro" (1). O paciente não vê esse nome. Clique em **Continuar**.
+
+    <Screenshot src="/images/whatsapp/criar-campanha-01-dados.webp" alt="Etapa Dados da tela Nova campanha com o campo Nome preenchido com Retorno de novembro e destacado com o número 1, o aviso de que campanhas enviam um modelo aprovado e o botão Continuar." />
+  </Step>
+  <Step title="Escolha o público">
+    Em **Quem recebe**, escolha **Filtros do CRM** ou **Todos os contatos ativos**. Com filtros, combine o que precisar: etiquetas (1), etapa do pipeline, origem, responsável e outros. Ao lado, o quadro **Público** (2) mostra quantos contatos foram encontrados, quantos são elegíveis e quantos ficam de fora. Veja os detalhes em [Público de uma campanha](/whatsapp/publico-da-campanha).
+
+    <Screenshot src="/images/whatsapp/criar-campanha-02-publico.webp" alt="Etapa Público do rascunho Novidades para pacientes VIP: Filtros do CRM selecionado, o filtro Etiquetas com a etiqueta VIP destacado com o número 1 e o quadro Público com 5 encontrados, 5 elegíveis e 0 excluídos destacado com o número 2." />
+  </Step>
+  <Step title="Escolha o modelo e preencha as variáveis">
+    Em **Modelo** (1), escolha um dos modelos aprovados. Em **Variáveis do modelo** (2), o Sile mostra de onde vem cada informação da mensagem (veja abaixo). A **Prévia da mensagem** (3) mostra como o texto vai ficar, com dados de exemplo. Para ver com o nome de um paciente do público, clique em **Contato da lista** e escolha um contato.
+
+    <Screenshot src="/images/whatsapp/criar-campanha-03-mensagem.webp" alt="Etapa Mensagem com o modelo Retorno semestral escolhido e destacado com o número 1, as variáveis Nome do paciente e Nome da clínica destacadas com o número 2 e a prévia da mensagem com dados de exemplo destacada com o número 3." />
+  </Step>
+  <Step title="Escolha quando enviar">
+    Em **Envio**, escolha **Enviar agora** ou **Agendar** e confira o horário de silêncio da campanha. Veja [Como enviar ou agendar uma campanha](/whatsapp/enviar-ou-agendar-campanha).
+  </Step>
+  <Step title="Revise e confirme">
+    Em **Revisão**, confira o nome, o público, o número de destinatários, o modelo e o horário. Embaixo, a lista mostra os contatos que vão receber e os que ficam de fora. Se algo impedir o envio, o quadro **Antes de confirmar** explica o que falta. Quando estiver tudo certo, clique em **Confirmar envio** ou **Confirmar agendamento** (1).
+
+    <Screenshot src="/images/whatsapp/criar-campanha-04-revisao.webp" alt="Etapa Revisão do rascunho Novidades para pacientes VIP com o resumo da campanha, 5 contatos elegíveis, o modelo Retorno semestral, o envio em 13/10/2026 às 10:00 e a lista de destinatários; o botão Confirmar agendamento está destacado com o número 1." />
+  </Step>
+</Steps>
+
+## De onde vêm as variáveis
+
+O modelo pode ter partes que mudam de uma mensagem para outra. A campanha resolve cada uma assim:
+
+| Variável | De onde vem | Igual para todos? |
+| --- | --- | --- |
+| Nome do paciente | Primeiro nome de cada contato | Não: cada paciente recebe o próprio nome |
+| Nome da clínica | Nome da clínica cadastrado no Sile | Sim |
+| Serviço, Data, Horário, Profissional | Um valor que você escreve na campanha (por exemplo, "Clareamento") | Sim: o mesmo para todos os destinatários |
+
+Um contato sem um nome válido (por exemplo, cadastrado só com o número) não recebe a campanha. Assim, nenhuma mensagem sai com um espaço em branco no lugar do nome.
+
+## O que acontece depois
+
+- Ao confirmar, a lista de destinatários é congelada e a campanha muda para <Status tone="info">Agendada</Status>.
+- No horário, ela passa para <Status tone="info">Enviando</Status> e depois para <Status tone="success">Concluída</Status>. Acompanhe em [Resultados de uma campanha](/whatsapp/resultados-da-campanha).
+
+<Tip title="Reaproveite uma campanha">
+  Em uma campanha já enviada, clique em **Duplicar**. O Sile cria um rascunho com o mesmo público, modelo e valores, para você ajustar e enviar de novo.
+</Tip>

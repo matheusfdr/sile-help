@@ -1,0 +1,73 @@
+---
+title: Como enviar ou agendar uma campanha
+description: Escolha entre enviar agora ou agendar uma campanha, ajuste o horário de silêncio, confirme o envio e saiba como cancelar ou interromper.
+type: tutorial
+topic: campanhas
+order: 4
+lastUpdated: 2026-10-12
+related:
+  - /whatsapp/criar-campanha
+  - /whatsapp/resultados-da-campanha
+  - /whatsapp/campanha-nao-pode-ser-enviada
+aliases:
+  - agendar disparo
+  - programar campanha
+  - horário de silêncio
+  - cancelar campanha
+  - parar campanha
+  - interromper envio
+---
+
+Na etapa **Envio** você decide quando a campanha sai. O Sile envia as mensagens aos poucos, em lotes, a partir do horário escolhido. Não é preciso deixar o navegador aberto.
+
+## Antes de começar
+
+- O rascunho precisa ter público e modelo. Veja [Como criar uma campanha](/whatsapp/criar-campanha).
+- Os horários são sempre os da clínica, mostrados no topo da etapa (por exemplo, "Horário da clínica: Brasília").
+
+## Como fazer
+
+<Steps>
+  <Step title="Escolha enviar agora ou agendar">
+    Na etapa **Envio**, escolha **Enviar agora** para começar assim que confirmar, ou **Agendar** (1) e informe a **Data** e o **Horário** (2). O agendamento pode ser feito a partir de alguns minutos à frente e até 90 dias.
+
+    <Screenshot src="/images/whatsapp/enviar-agendar-01-quando.webp" alt="Etapa Envio com a opção Agendar selecionada e destacada com o número 1, a data 13/10/2026 e o horário 10:00 destacados com o número 2 e o horário de silêncio desta campanha, das 21h às 08h, destacado com o número 3." />
+  </Step>
+  <Step title="Confira o horário de silêncio">
+    Em **Horário de silêncio desta campanha** (3), escolha o período em que nenhuma mensagem pode sair. O padrão é das 21h às 8h. O silêncio pode mudar, mas não pode ser desligado.
+  </Step>
+  <Step title="Revise e confirme">
+    Clique em **Continuar** e, na **Revisão**, em **Confirmar envio** ou **Confirmar agendamento**. Uma janela pede a confirmação final com o número de contatos. Em campanhas para 100 contatos ou mais, marque também a caixa "Confirmo o envio para…".
+
+    <Screenshot src="/images/whatsapp/enviar-agendar-02-confirmar.webp" alt="Janela Agendar para 5 contatos? informando que a campanha Novidades para pacientes VIP vai enviar o modelo Retorno semestral em 13/10/2026 às 10:00, que mensagens enviadas não podem ser desfeitas, e os botões Voltar e Confirmar agendamento." />
+  </Step>
+</Steps>
+
+## O que acontece depois
+
+- A lista de destinatários é congelada no momento da confirmação.
+- Se o público mudou desde a revisão (por exemplo, alguém recebeu a etiqueta nesse intervalo), o Sile avisa o número novo e pede para você revisar e confirmar de novo. Assim, ninguém recebe sem você ter visto.
+- Uma campanha agendada mostra **Agendada para** com a data e o horário. No horário, ela começa sozinha, mesmo com o navegador fechado.
+- Se o envio chegar ao horário de silêncio, ele pausa e continua quando o período termina.
+
+## Horário de silêncio na prática
+
+| Situação | O que acontece |
+| --- | --- |
+| Você tenta **Enviar agora** dentro do silêncio | O Sile não deixa confirmar e sugere agendar para depois do fim do período |
+| Você agenda um horário dentro do silêncio | O horário é recusado; escolha um horário fora do período |
+| Uma campanha grande ainda está enviando quando o silêncio começa | O envio pausa e continua no fim do período |
+
+## Cancelar ou interromper
+
+<Screenshot src="/images/whatsapp/enviar-agendar-03-agendada.webp" alt="Campanha Convite para clareamento com o status Agendada, agendada para 15/10/2026 às 10:00, e o botão Cancelar envio destacado com o número 1." />
+
+| Status | Botão | O que acontece |
+| --- | --- | --- |
+| <Status>Rascunho</Status> | **Cancelar rascunho** | O rascunho fica no histórico como cancelado. Nada foi enviado |
+| <Status tone="info">Agendada</Status> | **Cancelar envio** (1) | Nenhuma mensagem da campanha é enviada |
+| <Status tone="info">Enviando</Status> | **Interromper envio** | Quem ainda não recebeu não vai receber. O que já saiu não pode ser desfeito |
+
+<Warning title="Mensagens enviadas não voltam">
+  Depois que uma mensagem sai para o WhatsApp do paciente, não há como apagá-la. Revise a mensagem e o público antes de confirmar.
+</Warning>

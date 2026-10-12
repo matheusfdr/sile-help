@@ -1,0 +1,64 @@
+---
+title: Público de uma campanha
+description: Conheça os filtros para escolher quem recebe uma campanha, os motivos que deixam um contato de fora e como criar uma campanha a partir dos contatos selecionados.
+type: referencia
+topic: campanhas
+order: 3
+lastUpdated: 2026-10-12
+related:
+  - /whatsapp/criar-campanha
+  - /whatsapp/campanhas
+  - /whatsapp/campanha-nao-pode-ser-enviada
+aliases:
+  - segmentar contatos
+  - filtrar contatos para campanha
+  - escolher quem recebe
+  - contatos excluídos
+  - não contatar
+  - etiqueta na campanha
+---
+
+O público é quem recebe a campanha. Ele é definido na etapa **Público** e pode vir de três lugares: dos **filtros do CRM**, dos **contatos escolhidos** na tela Contatos ou de **todos os contatos ativos**. Contatos arquivados nunca entram.
+
+## Filtros do CRM
+
+Os filtros usam o que já está no cadastro dos contatos. Dentro de um mesmo filtro, basta o contato ter uma das opções (por exemplo, a etiqueta VIP **ou** Retorno). Entre filtros diferentes, o contato precisa atender a todos (por exemplo, etiqueta Retorno **e** origem Indicação).
+
+| Filtro | O que considera |
+| --- | --- |
+| Etiquetas (qualquer uma) | As etiquetas do contato |
+| Etapa do pipeline | A etapa atual do contato no pipeline |
+| Oportunidade | Se a oportunidade está em aberto, convertida ou perdida |
+| Origem | Por onde o contato chegou (Instagram, Google, Indicação…) |
+| Interesse | O serviço de interesse do contato |
+| Responsável | Quem da equipe é o responsável, ou o Sile |
+| Atendido por (profissional) | Contatos com consulta com o profissional escolhido |
+| Cadastrado entre | A data de cadastro do contato |
+| Último contato | Contato nos últimos dias, ou sem contato há mais de um período |
+| Consulta marcada | Com ou sem uma consulta futura marcada |
+
+Enquanto a campanha é rascunho, a contagem acompanha o CRM. Ao confirmar, a lista é congelada.
+
+## Quem fica de fora
+
+Nem todo contato encontrado recebe a campanha. O quadro **Público** separa os **elegíveis** dos **excluídos** e mostra o motivo de cada exclusão (1).
+
+<Screenshot src="/images/whatsapp/publico-02-exclusoes.webp" alt="Quadro Público com 14 contatos encontrados, 12 elegíveis e 2 excluídos, e a lista de motivos destacada com o número 1: Pediu para não receber mensagens, 1, e Sem número de WhatsApp, 1." />
+
+| Motivo | O que significa |
+| --- | --- |
+| Pediu para não receber mensagens | O contato está marcado como "Não contatar". Nenhuma campanha é enviada para ele |
+| Sem número de WhatsApp | O cadastro não tem um número para enviar |
+| Sem dados para as variáveis do modelo | O modelo usa o nome do paciente, e o contato não tem um nome válido |
+
+Os mesmos motivos são conferidos de novo na hora de cada envio, junto com contatos arquivados ou anonimizados depois da confirmação. Se um paciente responder pedindo para parar depois que a campanha foi confirmada, ele não recebe a mensagem. Nos resultados, ele aparece como **Não enviada**.
+
+## Criar uma campanha a partir de Contatos
+
+Em **Relacionamento → Contatos**, marque os contatos na lista. Na barra que aparece, clique em **Criar campanha** (1). A nova campanha começa com esses contatos como público (**Contatos escolhidos**). Quem estiver marcado como "Não contatar" continua fora, mesmo escolhido.
+
+<Screenshot src="/images/whatsapp/publico-01-criar-de-contatos.webp" alt="Tela Contatos com Mariana Souza e Juliana Costa selecionadas, o aviso 2 selecionados e o botão Criar campanha destacado com o número 1." />
+
+<Callout title="Todos os contatos ativos">
+  Use essa opção com cuidado: o público inclui todos os contatos não arquivados do CRM. Quem pediu para não receber mensagens continua de fora. Revise a contagem antes de confirmar.
+</Callout>

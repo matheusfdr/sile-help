@@ -54,6 +54,40 @@ E-mails dos pacientes: `nome.sobrenome@email.example`.
 
 Tags usadas: Novo lead, Botox, Avaliação, Retorno, VIP.
 
+### Pacientes das campanhas
+
+As telas de Campanhas precisam de um público maior. Além dos cinco pacientes acima, a Clínica Aurora tem estes pacientes fictícios, todos na faixa reservada de telefones:
+
+| Nome | Telefone | Etiquetas | Observação |
+| --- | --- | --- | --- |
+| Beatriz Ramos | +55 11 90000-1006 | Retorno, VIP | |
+| Gustavo Pereira | +55 11 90000-1007 | Retorno | |
+| Larissa Nunes | +55 11 90000-1008 | Retorno | |
+| Thiago Carvalho | +55 11 90000-1009 | Retorno | |
+| Patrícia Melo | +55 11 90000-1010 | Retorno | |
+| Bruno Azevedo | +55 11 90000-1011 | Retorno | |
+| Renata Dias | +55 11 90000-1012 | Retorno | |
+| Eduardo Barbosa | +55 11 90000-1013 | Retorno | |
+| Vanessa Ribeiro | +55 11 90000-1014 | Retorno | Pediu para não receber mensagens ("Não contatar") |
+| Rodrigo Teixeira | (sem telefone) | Retorno | Cadastro sem número |
+| Aline Moreira | +55 11 90000-1016 | Avaliação | |
+| Diego Castro | +55 11 90000-1017 | Avaliação | |
+| Priscila Freitas | +55 11 90000-1018 | Avaliação | |
+| Marcelo Pinto | +55 11 90000-1019 | Avaliação | Pediu para não receber mensagens ("Não contatar") |
+| Tatiane Lopes | +55 11 90000-1020 | VIP | |
+
+Nos pacientes da história, Mariana Souza também tem a etiqueta Avaliação, Juliana Costa e Felipe Martins têm Retorno e VIP, Camila Oliveira tem Avaliação e Rafael Gomes tem VIP.
+
+### Campanhas
+
+| Campanha | Status | Público | Modelo |
+| --- | --- | --- | --- |
+| Retorno de outubro | Concluída | Etiqueta Retorno: 12 selecionados, 10 elegíveis, 2 excluídos; 9 enviadas, 8 entregues, 5 lidas, 1 falha | Retorno semestral |
+| Convite para clareamento | Agendada (daqui a três dias, às 10h) | Etiqueta Avaliação, com o serviço "Clareamento" na mensagem | Convite para um serviço |
+| Novidades para pacientes VIP | Rascunho | Etiqueta VIP (5 contatos) | Retorno semestral |
+
+Modelos aprovados: **Retorno semestral** (nome do paciente e da clínica) e **Convite para um serviço** (nome do paciente, da clínica e um serviço escolhido na campanha).
+
 ## Regras
 
 - E-mails sempre no domínio reservado `.example`; o único e-mail real é o do suporte (suporte@sileai.app).
@@ -64,6 +98,8 @@ Tags usadas: Novo lead, Botox, Avaliação, Retorno, VIP.
 ## Onde o dataset vive
 
 O dataset é carregado só no servidor de desenvolvimento do Sile, por opção explícita, e nunca vai para produção. Instruções para rodar em [scripts/docs-screenshots/README.md](../scripts/docs-screenshots/README.md). Ao mudar este documento, mude também o dataset no produto (e vice-versa).
+
+Campanhas só existem com o servidor do Sile ligado. Para elas, a mesma Clínica Aurora é preparada no banco de dados local do produto, com o mesmo elenco e a senha `documentacao`, e o app roda conectado a ele (ver [scripts/docs-screenshots/README.md](../scripts/docs-screenshots/README.md), seção "Campanhas").
 
 Dois estágios:
 

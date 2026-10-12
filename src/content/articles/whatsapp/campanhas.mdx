@@ -1,0 +1,60 @@
+---
+title: O que são campanhas
+description: Entenda como as campanhas enviam um modelo de mensagem aprovado para um grupo de contatos, agora ou em um horário agendado, e no que elas diferem das automações.
+type: conceito
+topic: campanhas
+order: 1
+lastUpdated: 2026-10-12
+related:
+  - /whatsapp/criar-campanha
+  - /whatsapp/publico-da-campanha
+  - /whatsapp/resultados-da-campanha
+aliases:
+  - disparo
+  - disparo em massa
+  - mensagem em massa
+  - mensagem ativa
+  - envio para vários contatos
+  - lista de transmissão
+  - campanha de whatsapp
+---
+
+Uma campanha envia **um modelo de mensagem aprovado** pelo WhatsApp da clínica para **um grupo de contatos** que você escolhe, uma única vez: agora ou no dia e horário que você agendar. É a forma de fazer uma mensagem ativa, aquela que parte da clínica, como convidar pacientes para um retorno ou avisar sobre horários abertos para um serviço.
+
+Você encontra as campanhas em **WhatsApp → Campanhas**.
+
+<Screenshot src="/images/whatsapp/campanhas-01-lista.webp" alt="Tela Campanhas da Clínica Aurora com três campanhas: Novidades para pacientes VIP em rascunho, Convite para clareamento agendada e Retorno de outubro concluída com 10 destinatários, 9 enviadas, 8 entregues, 5 lidas e 1 falha. O botão Nova campanha está destacado com o número 1." />
+
+## Campanha ou automação?
+
+| | Campanha | Automação |
+| --- | --- | --- |
+| Quem decide o envio | Uma pessoa da equipe, no momento em que confirma | Um acontecimento (um agendamento criado, uma falta, um contato novo) |
+| Quantas vezes envia | Uma vez, para o público escolhido | Sempre que o acontecimento se repete |
+| Para quem | Um grupo de contatos do CRM (filtros ou contatos escolhidos) | O contato do acontecimento |
+| Exemplo | "Retorno de outubro" para todos com a etiqueta Retorno | Lembrete 24 horas antes de cada consulta |
+
+Se a mensagem precisa sair toda vez que algo acontece, use uma automação. Se é um envio pontual para um grupo, use uma campanha.
+
+## Como uma campanha funciona
+
+1. **Rascunho.** Você dá um nome, escolhe o público, o modelo e quando enviar. Enquanto é rascunho, nada é enviado e a contagem de contatos acompanha o CRM.
+2. **Confirmação.** Ao confirmar, a lista de destinatários é congelada: um contato que receber a etiqueta depois disso não entra nesta campanha.
+3. **Envio.** No horário escolhido, o Sile envia as mensagens aos poucos, em lotes. Você pode fechar o navegador: o envio continua.
+4. **Resultados.** A campanha mostra quantas mensagens foram enviadas, entregues, lidas ou falharam, e cada mensagem aparece na conversa do contato, na Inbox.
+
+## Regras que valem para toda campanha
+
+- **Sempre um modelo aprovado.** Campanhas não enviam texto livre. O modelo é escolhido entre os aprovados em **WhatsApp → Modelos**.
+- **Quem pediu para não receber mensagens nunca recebe.** Contatos marcados como "Não contatar" ficam fora do público. E o Sile confere de novo na hora de cada envio: se o paciente pedir para parar depois que você confirmou, ele não recebe.
+- **Horário de silêncio.** Cada campanha tem um período em que nenhuma mensagem sai (por padrão, das 21h às 8h, no horário da clínica). Você pode mudar o período, mas não desligar.
+- **Não dá para desfazer um envio.** Até o horário agendado, a campanha pode ser cancelada. Durante o envio, você pode interromper o que ainda não saiu.
+
+## Quem pode fazer o quê
+
+| Perfil | O que pode fazer |
+| --- | --- |
+| Owner e Admin | Criar, editar, confirmar, cancelar e duplicar campanhas |
+| Atendente e Visualizador | Ver as campanhas e os resultados, sem criar nem enviar |
+
+As respostas dos pacientes chegam na Inbox como qualquer conversa. Veja [Visão geral da Inbox](/atendimento/inbox).
