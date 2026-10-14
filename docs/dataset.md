@@ -31,7 +31,7 @@ Todas as capturas e exemplos usam a **Clínica Aurora**, uma clínica fictícia 
 
 ## Serviços
 
-| Serviço | Preço | Duração | Sile pode agendar |
+| Serviço | Preço | Duração | O assistente pode agendar |
 | --- | --- | --- | --- |
 | Avaliação | Gratuita | 30 min | Sim |
 | Limpeza | R$ 250,00 | 45 min | Sim |
@@ -44,10 +44,10 @@ Todas as capturas e exemplos usam a **Clínica Aurora**, uma clínica fictícia 
 
 | Nome | Telefone | Situação na história |
 | --- | --- | --- |
-| Mariana Souza | +55 11 90000-1001 | Novo lead interessada em Botox. O Sile está atendendo; Ana assume nos tutoriais. |
+| Mariana Souza | +55 11 90000-1001 | Novo lead interessada em Botox. A Lia está atendendo; Ana assume nos tutoriais. |
 | Juliana Costa | +55 11 90000-1002 | Indicada por amiga, clareamento confirmado com a Dra. Fernanda. Atendida por Lucas. |
-| Camila Oliveira | +55 11 90000-1003 | Perguntou se pode fazer clareamento com sensibilidade. O Sile transferiu (aguardando atendente). |
-| Felipe Martins | +55 11 90000-1004 | Paciente de retorno. O Sile agendou a consulta de retorno com o Dr. Rafael. |
+| Camila Oliveira | +55 11 90000-1003 | Perguntou se pode fazer clareamento com sensibilidade. A Lia transferiu (aguardando atendente). |
+| Felipe Martins | +55 11 90000-1004 | Paciente de retorno. A Lia agendou a consulta de retorno com o Dr. Rafael. |
 | Rafael Gomes | +55 11 90000-1005 | Faltou na avaliação e remarcou o preenchimento. Atendido por Ana. |
 
 E-mails dos pacientes: `nome.sobrenome@email.example`.
@@ -87,6 +87,15 @@ Nos pacientes da história, Mariana Souza também tem a etiqueta Avaliação, Ju
 | Novidades para pacientes VIP | Rascunho | Etiqueta VIP (5 contatos) | Retorno semestral |
 
 Modelos aprovados: **Retorno semestral** (nome do paciente e da clínica) e **Convite para um serviço** (nome do paciente, da clínica e um serviço escolhido na campanha).
+
+## Assistente da clínica
+
+| Estágio | Nome | Configuração |
+| --- | --- | --- |
+| Em operação | **Lia** | Papel "Assistente virtual de atendimento da Clínica Aurora"; apresentação "Olá! Sou a Lia, assistente virtual da Clínica Aurora. Como posso te ajudar?"; personalidade Acolhedor com a descrição "Seja acolhedora e calma. Explique de forma simples e objetiva."; mensagens de atendimento com o texto padrão. |
+| Em implantação (configuração guiada) | **Assistente** | O nome padrão de uma clínica nova, ainda em Rascunho. |
+
+"Sile" é a plataforma, nunca o nome do assistente.
 
 ## Regras
 
