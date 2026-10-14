@@ -1,5 +1,5 @@
 // Atendimento: Inbox of the operating Clínica Aurora, logged in as Ana Martins (Owner).
-// Validates and captures: overview, opening a conversation, taking over, returning to the Sile,
+// Validates and captures: overview, opening a conversation, taking over, returning to the assistant ("Lia" in the dataset),
 // sending messages, templates, attachments and the contact panel.
 import { test, expect, type Page } from '@playwright/test';
 import { start, go, settle, highlight, clearHighlights, shot } from './helpers';
@@ -54,9 +54,10 @@ test('assumir e devolver um atendimento', async ({ page }) => {
   await settle(page, 700);
   await open(page, 'Mariana Souza');
 
-  // Sile atendendo: botão no topo e aviso no lugar do campo de mensagem
+  // Lia (o assistente da Clínica Aurora) atendendo: botão no topo e aviso no lugar do campo de mensagem
+  await expect(page.locator('.chat__line').getByText('Lia está atendendo')).toBeVisible();
   await highlight(page.locator('.chat__head').getByRole('button', { name: 'Assumir atendimento' }), 1);
-  await shot(page, `${DIR}/assumir-01-sile-atendendo`, { locator: chat(page) });
+  await shot(page, `${DIR}/assumir-01-ia-atendendo`, { locator: chat(page) });
   await clearHighlights(page);
 
   // Assumir
@@ -70,24 +71,24 @@ test('assumir e devolver um atendimento', async ({ page }) => {
   await shot(page, `${DIR}/assumir-03-voce-atendendo`, { locator: chat(page) });
   await clearHighlights(page);
 
-  // Conversa transferida pelo Sile (aguardando atendente)
+  // Conversa transferida pelo assistente (aguardando atendente)
   await open(page, 'Camila Oliveira');
   await shot(page, `${DIR}/assumir-04-aguardando-atendente`, { locator: chat(page) });
 
-  // Devolver para o Sile
+  // Devolver para o assistente
   await open(page, 'Mariana Souza');
   await highlight(page.locator('.chat__head').getByRole('button', { name: 'Devolver para IA' }), 1);
   await shot(page, `${DIR}/devolver-01-botao`, { locator: page.locator('.chat__head'), pad: 0 });
   await clearHighlights(page);
   await page.locator('.chat__head').getByRole('button', { name: 'Devolver para IA' }).click();
-  const dialog = page.getByRole('dialog', { name: 'Devolver para o Sile?' });
+  const dialog = page.getByRole('dialog', { name: 'Devolver para Lia (IA)?' });
   await expect(dialog).toBeVisible();
   await page.waitForTimeout(400);
   await shot(page, `${DIR}/devolver-02-confirmar`, { locator: page.locator('.sl-modal'), pad: 16 });
   await dialog.getByRole('button', { name: 'Devolver para IA' }).click();
-  await expect(chat(page).getByText('Ana Martins devolveu a conversa para o Sile')).toBeVisible();
+  await expect(chat(page).getByText('Ana Martins devolveu a conversa para Lia (IA)')).toBeVisible();
   await settle(page, 400);
-  await shot(page, `${DIR}/devolver-03-sile-de-volta`, { locator: chat(page) });
+  await shot(page, `${DIR}/devolver-03-ia-de-volta`, { locator: chat(page) });
 });
 
 test('enviar mensagens, modelos e anexos', async ({ page }) => {

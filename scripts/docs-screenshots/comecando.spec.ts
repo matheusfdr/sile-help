@@ -27,7 +27,18 @@ test('configuração guiada (Clínica Aurora em implantação)', async ({ page }
   await shot(page, `${DIR}/01-boas-vindas`, { clip: { x: 0, y: 0, width: 1440, height: 900 } });
   await clearHighlights(page);
 
-  // Integrações antes de conectar (para o artigo do WhatsApp)
+  // Configuração guiada
+  await go(page, '/onboarding');
+  await hideToasts(page);
+  await guidedSetup(page);
+});
+
+// Integrações antes de conectar (para o artigo do WhatsApp). Separado da configuração guiada: o modal de conexão do
+// produto mudou (hoje "Conectar o WhatsApp", com número atual ou exclusivo) e o artigo do WhatsApp ainda descreve o
+// anterior — pendente de revisão junto com a integração com a Meta. Enquanto isso, este teste falha de propósito.
+test('integrações antes de conectar o WhatsApp', async ({ page }) => {
+  await start(page, { stage: 'onboarding' });
+  await settle(page);
   await go(page, '/integrations');
   await settle(page, 800);
   const waCard = page.locator('.sl-feature').filter({ hasText: 'WhatsApp Business' });
@@ -40,11 +51,9 @@ test('configuração guiada (Clínica Aurora em implantação)', async ({ page }
   await page.waitForTimeout(400);
   await shot(page, `${DIR}/conectar-whatsapp-02-modal`, { locator: page.locator('.sl-modal'), pad: 16 });
   await modal.getByRole('button', { name: 'Cancelar' }).click();
+});
 
-  // Configuração guiada
-  await go(page, '/onboarding');
-  await hideToasts(page);
-
+async function guidedSetup(page: Page) {
   // 1. Sua clínica
   await stepTitle(page, 'Sua clínica');
   await page.getByLabel('Telefone').fill('+55 11 90000-0100');
@@ -129,7 +138,9 @@ test('configuração guiada (Clínica Aurora em implantação)', async ({ page }
 
   // 7. Agente
   await stepTitle(page, 'Agente');
-  await page.getByLabel('Objetivo').fill('Tirar dúvidas sobre os tratamentos e conduzir o paciente para uma avaliação.');
+  // The default name of a new clinic's assistant is the neutral "Assistente" (never "Sile", the platform).
+  await expect(page.getByLabel('Nome do assistente')).toHaveValue('Assistente');
+  await page.getByRole('textbox', { name: 'Objetivo' }).fill('Tirar dúvidas sobre os tratamentos e conduzir o paciente para uma avaliação.');
   await shot(page, `${DIR}/configurar-agente-01-etapa`, { locator: stepCard(page), pad: 16 });
   await page.getByRole('button', { name: 'Salvar e continuar', exact: true }).click();
 
@@ -142,26 +153,32 @@ test('configuração guiada (Clínica Aurora em implantação)', async ({ page }
     await expect(page.getByText(/está digitando/)).toBeHidden({ timeout: 15_000 });
     await page.waitForTimeout(300);
   }
-  await expect(page.getByRole('button', { name: 'O Sile respondeu bem' })).toBeEnabled();
+  await expect(page.getByRole('button', { name: 'O assistente respondeu bem' })).toBeEnabled();
   await shot(page, `${DIR}/testar-01-etapa-teste`, { locator: stepCard(page), pad: 16 });
-  await page.getByRole('button', { name: 'O Sile respondeu bem' }).click();
+  await page.getByRole('button', { name: 'O assistente respondeu bem' }).click();
 
   // 9. Ativar
   await stepTitle(page, 'Ativar');
   await expect(page.locator('.ob-checklist .is-ok')).toHaveCount(4);
-  await highlight(page.getByRole('button', { name: 'Ativar o Sile' }), 1);
+  // Since billing: activating needs the free trial (or a plan). The trial starts only by this explicit click.
+  await expect(page.getByText('Teste gratuito ainda não iniciado')).toBeVisible();
+  await page.getByRole('button', { name: 'Iniciar teste grátis', exact: true }).click();
+  await page.getByRole('dialog', { name: 'Iniciar o teste gratuito agora?' }).getByRole('button', { name: 'Iniciar teste grátis', exact: true }).click();
+  await expect(page.locator('.ob-checklist .is-ok')).toHaveCount(5);
+  await settle(page, 400);
+  await highlight(page.getByRole('button', { name: 'Ativar o assistente', exact: true }), 1);
   await shot(page, `${DIR}/ativar-01-checklist`, { locator: stepCard(page), pad: 16 });
   await clearHighlights(page);
-  await page.getByRole('button', { name: 'Ativar o Sile' }).click();
-  const confirm = page.getByRole('dialog', { name: 'Ativar o Sile agora?' });
+  await page.getByRole('button', { name: 'Ativar o assistente', exact: true }).click();
+  const confirm = page.getByRole('dialog', { name: 'Ativar o assistente agora?' });
   await expect(confirm).toBeVisible();
   await page.waitForTimeout(400);
   await shot(page, `${DIR}/ativar-02-confirmar`, { locator: page.locator('.sl-modal'), pad: 16 });
   await showToasts(page);
   await confirm.getByRole('button', { name: 'Ativar', exact: true }).click();
   await page.waitForURL(/\/dashboard/);
-  await expect(page.getByText('O Sile está ativo')).toBeVisible();
-});
+  await expect(page.getByText('Assistente ativo')).toBeVisible();
+}
 
 test('clínica em operação: integrações, agente e playground', async ({ page }) => {
   await start(page);

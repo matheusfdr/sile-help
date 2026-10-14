@@ -1,0 +1,124 @@
+---
+title: Identidade e comportamento do agente
+description: Defina o nome do assistente da clínica, como ele se apresenta, o papel, a personalidade, o jeito de escrever, as regras e as mensagens de atendimento.
+type: tutorial
+topic: agente
+order: 1
+lastUpdated: 2026-10-13
+related:
+  - /agente/conhecimento
+  - /comecando/testar-no-playground
+  - /comecando/configurar-agente
+  - /comecando/ativar-o-sile
+aliases:
+  - nome do assistente
+  - nome do robô
+  - personalidade
+  - persona
+  - apresentação
+  - saudação
+  - tom de voz
+  - mensagem de transferência
+  - mudar o nome da ia
+---
+
+O Sile é a plataforma. O assistente que conversa com os pacientes é da clínica: cada clínica escolhe o nome, como ele se apresenta e como atende. Uma clínica nova começa com o nome **Assistente**, e vocês podem trocar quando quiserem, por exemplo para Sofia, Lia ou "Assistente da Clínica Aurora".
+
+Na Clínica Aurora, usada como exemplo nesta Central, o assistente se chama **Lia**.
+
+## Identidade e comportamento × Conhecimento
+
+| | Identidade e comportamento | Conhecimento |
+| --- | --- | --- |
+| Define | **Como o assistente atende**: nome, apresentação, papel, personalidade, jeito de escrever, regras e mensagens | **O que o assistente sabe**: informações da clínica, serviços, profissionais, unidades, perguntas frequentes, políticas e arquivos |
+| Exemplo | "Seja acolhedora e explique de forma simples." | "Aceitamos Pix e cartão em até 3x." |
+
+Coloque o nome e o jeito de atender aqui, nunca em textos ou documentos do Conhecimento. Instruções escritas no Conhecimento (como "seu nome é João") não mudam a identidade do assistente: ele as trata apenas como informação. Veja [O que colocar no Conhecimento](/agente/conhecimento).
+
+## Antes de começar
+
+- Você precisa ser **Owner** ou **Admin** para editar. Os outros perfis não veem nem alteram esta configuração.
+- A configuração é da clínica: vale só para a organização em que você está.
+
+## Onde editar
+
+Há dois caminhos para a **mesma** configuração. O que você salva em um aparece no outro; não existem dois assistentes.
+
+- **Inteligência → Conhecimento → Identidade e comportamento**: nome, apresentação, papel, personalidade, comunicação e mensagens.
+- **Inteligência → Agente**: tudo isso e também objetivo, regras, objetivo comercial, ações permitidas e transferência para humano.
+
+<Screenshot src="/images/agente/identidade-01-conhecimento.webp" alt="Tela Conhecimento da Clínica Aurora com a seção Identidade e comportamento aberta: o aviso explicando a diferença entre conhecimento e identidade e o quadro Identidade com o nome Lia, o papel e a apresentação." />
+
+## Como fazer
+
+<Steps>
+  <Step title="Escolha o nome e a apresentação">
+    No quadro **Identidade**:
+
+    - **Nome do assistente**: o nome que os pacientes veem, com até 40 caracteres. É obrigatório; "Assistente" é o nome neutro.
+    - **Papel do assistente** (opcional): o que ele faz pela clínica, por exemplo "Recepcionista virtual responsável por atendimento, dúvidas e agenda". Orienta as respostas; não tem relação com os perfis de acesso da equipe.
+    - **Apresentação** (opcional): como ele se apresenta no início de cada atendimento, por exemplo "Olá! Sou a Lia, assistente virtual da Clínica Aurora. Como posso te ajudar?". Em branco, vale uma apresentação automática com o nome e a clínica.
+
+    <Screenshot src="/images/agente/identidade-02-campos.webp" alt="Quadro Identidade com os campos Nome do assistente preenchido com Lia, Papel do assistente e Apresentação, cada um com a explicação e o contador de caracteres." />
+  </Step>
+  <Step title="Defina a personalidade">
+    No quadro **Personalidade**, escolha um estilo: **Profissional**, **Amigável**, **Objetivo**, **Acolhedor** ou **Persuasivo**. Se quiser, complete em **Como o assistente deve se comportar (opcional)**, com até 500 caracteres. Exemplo: "Seja acolhedora e calma. Evite linguagem muito formal. Explique de forma simples."
+  </Step>
+  <Step title="Ajuste a comunicação">
+    No quadro **Comunicação**, escolha o **Tamanho das mensagens** (curtas, médias ou longas), se ele faz **Uma pergunta por vez**, o uso de **Emojis** (nunca, às vezes ou frequente) e a **Formalidade** (informal, equilibrado ou formal, que trata o paciente por "o(a) senhor(a)").
+  </Step>
+  <Step title="Revise as mensagens de atendimento">
+    No quadro **Mensagens de atendimento**, você pode trocar dois textos enviados ao paciente exatamente como escritos, com até 300 caracteres cada. Em branco, vale o texto padrão.
+
+    - **Ao transferir para a equipe**: quando o paciente pede uma pessoa ou o assistente passa a conversa para a equipe.
+    - **Quando não puder responder**: quando não há uma resposta segura.
+
+    <Screenshot src="/images/agente/identidade-03-mensagens.webp" alt="Quadro Mensagens de atendimento com os campos Ao transferir para a equipe e Quando não puder responder, o aviso de que os textos não podem trazer valores, confirmação de agendamento nem orientação clínica e o atalho para a mensagem fora do horário." />
+  </Step>
+  <Step title="Teste antes de salvar">
+    Ao mudar qualquer campo, aparece a barra **Alterações não salvas**. Clique em **Testar sem salvar** para conversar com o assistente no Playground usando essas mudanças, sem que elas passem a valer. Veja [Testar o agente no Playground](/comecando/testar-no-playground).
+
+    <Screenshot src="/images/agente/identidade-06-testar-sem-salvar.webp" alt="Barra Alterações não salvas com os botões Testar sem salvar, destacado com o número 1, Descartar e Salvar alterações." narrow />
+  </Step>
+  <Step title="Salve">
+    Clique em **Salvar alterações**. As mudanças passam a valer nos próximos atendimentos e aparecem também na outra tela. Para desistir, clique em **Descartar**.
+  </Step>
+</Steps>
+
+## O que mais fica na tela Agente
+
+| Seção | O que você ajusta |
+| --- | --- |
+| Objetivo | O que o assistente busca em cada conversa, em uma frase, com sugestões prontas. |
+| Regras | As regras fixas da plataforma (sempre ligadas), consultar a base antes de responder, transferir quando não souber e até 20 **regras da clínica**, com até 300 caracteres cada, como "Nunca oferecer horários aos domingos". |
+| Objetivo comercial | **Conduzir para agendamento**, **Qualificar e transferir** ou **Tirar dúvidas**. |
+| Ferramentas | O que o assistente pode fazer sozinho, como **Consultar agenda** e **Criar agendamento** (que também remarca a pedido do paciente), **Cancelar agendamento**, **Consultar conhecimento** e **Transferir para humano**. Cada ação é conferida pelo Sile antes de acontecer. |
+| Transferência para humano | Quando a conversa passa para a equipe: quando o paciente pedir, em reclamações e em dúvidas clínicas (sempre). |
+
+## Quando a apresentação aparece
+
+A apresentação abre o atendimento: o assistente se apresenta na primeira resposta de uma conversa nova ou quando nem o assistente nem a equipe escreveram ao paciente nas últimas 24 horas. Nas mensagens seguintes ele não se apresenta de novo.
+
+## O exemplo ao lado do formulário
+
+Na tela Agente, o quadro **Exemplo** mostra uma ilustração com a configuração atual: a apresentação e uma resposta de preço a partir dos serviços cadastrados. Ele não é uma conversa de verdade com a IA. Para testar de verdade, use o Playground.
+
+<Screenshot src="/images/agente/identidade-04-exemplo.webp" alt="Quadro Exemplo da tela Agente com a apresentação da Lia, uma resposta de preço com a fonte Serviços e o botão Testar no Playground." narrow />
+
+## O que a clínica não pode mudar
+
+Algumas regras são da plataforma e valem para todas as clínicas, qualquer que seja a configuração:
+
+- o assistente não faz diagnóstico, não prescreve e não dá orientação clínica;
+- dúvidas clínicas, sintomas, dor ou reação vão sempre para a equipe;
+- preço, horário e promoção só vêm do que está cadastrado;
+- quem pediu para não receber mensagens não recebe;
+- permissões da equipe e a separação entre clínicas continuam valendo.
+
+Na tela, essas regras aparecem com um cadeado ou com a indicação "Regra da plataforma".
+
+<Screenshot src="/images/agente/identidade-05-transferencia.webp" alt="Quadro Transferência para humano com as opções quando o paciente pedir e reclamações, a linha Dúvidas clínicas ou sobre saúde travada como regra da plataforma e a linha Fora do horário de atendimento com o atalho para Configurações." />
+
+<Tip>
+  A mensagem enviada fora do horário e a escolha de o assistente atender ou não fora dele ficam em **Configurações → Atendimento**, junto do horário da clínica.
+</Tip>
