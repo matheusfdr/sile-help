@@ -21,12 +21,12 @@ export interface Category {
 }
 
 export const categories: Category[] = [
-  { id: 'comecando', label: 'Começando', description: 'Configure a clínica, conecte o WhatsApp, teste e ative o Sile.', icon: 'rocket' },
+  { id: 'comecando', label: 'Começando', description: 'Configure a clínica, conecte o WhatsApp, teste e ative o assistente.', icon: 'rocket' },
   { id: 'atendimento', label: 'Atendimento', description: 'Inbox, conversas, atendimento humano e devolução para a IA.', icon: 'inbox' },
   { id: 'crm', label: 'Contatos e CRM', description: 'Contatos, tags, histórico e o pipeline de oportunidades.', icon: 'contact' },
   { id: 'agenda', label: 'Agenda', description: 'Agendamentos, status, remarcações e cancelamentos.', icon: 'calendar' },
   { id: 'servicos-e-profissionais', label: 'Serviços e profissionais', description: 'Catálogo de serviços, profissionais e disponibilidade.', icon: 'stethoscope' },
-  { id: 'agente', label: 'Inteligência artificial', description: 'Como o agente Sile funciona, regras, conhecimento e testes.', icon: 'bot' },
+  { id: 'agente', label: 'Inteligência artificial', description: 'Identidade e comportamento do assistente da clínica, conhecimento e testes.', icon: 'bot' },
   { id: 'automacoes', label: 'Automações', description: 'Lembretes, follow-ups e mensagens automáticas.', icon: 'workflow' },
   { id: 'whatsapp', label: 'WhatsApp', description: 'Campanhas, conexão do número e modelos de mensagem.', icon: 'message-circle' },
   { id: 'relatorios', label: 'Relatórios', description: 'Indicadores de atendimento, comercial, agenda e IA.', icon: 'chart-column' },
