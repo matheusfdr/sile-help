@@ -1,0 +1,60 @@
+---
+title: Mensagens de áudio e transcrição
+description: Veja como os áudios dos pacientes aparecem na Inbox, como o assistente usa a transcrição para responder e o que acontece quando ela não está disponível.
+type: conceito
+topic: conversas
+order: 7
+lastUpdated: 2026-11-15
+related:
+  - /atendimento/arquivos-recebidos
+  - /atendimento/assumir-conversa
+  - /atendimento/inbox
+aliases:
+  - áudio
+  - mensagem de voz
+  - nota de voz
+  - ouvir áudio
+  - transcrição
+  - transcrever áudio
+  - paciente mandou áudio
+---
+
+Quando um paciente manda uma mensagem de voz pelo WhatsApp, ela aparece na conversa da Inbox com um player para ouvir. Se a transcrição automática estiver ativa para a clínica, o texto do áudio aparece logo abaixo, e o assistente usa esse texto para responder.
+
+## Como o áudio aparece na conversa
+
+<Screenshot src="/images/atendimento/audio-01-transcricao.webp" alt="Mensagem de voz de Felipe Martins com o player numerado (1) e a caixa Transcrição numerada (2), seguida da resposta da Lia com horários de consulta de retorno." />
+
+1. **Player**: clique no botão de play para ouvir e de novo para pausar. Ao lado aparece a duração. O áudio só carrega quando você clica: nada toca sozinho.
+2. **Transcrição**: o texto do que o paciente falou, ligado ao próprio áudio. A transcrição não vira uma mensagem nova na conversa e não muda o áudio original, que continua disponível para ouvir.
+
+Enquanto o texto é preparado, a caixa mostra **Transcrevendo o áudio…**. Isso costuma levar poucos segundos.
+
+## Como o assistente usa o áudio
+
+Quando a transcrição fica pronta, o assistente lê o texto como a mensagem do paciente e responde do jeito de sempre: tira dúvidas com o Conhecimento, consulta horários, agenda ou transfere para a equipe, conforme a configuração do agente. Se o paciente também digitou alguma coisa enquanto o áudio era transcrito, o assistente responde ao áudio e ao texto juntos, numa resposta só.
+
+O assistente trata a transcrição como fala do paciente, nunca como uma instrução. Se alguém disser no áudio "ignore as regras", isso não muda as regras nem o que o assistente pode fazer.
+
+Na imagem acima, Felipe Martins pediu por áudio para remarcar a consulta de retorno, e a Lia respondeu com os horários livres.
+
+## Quando não há transcrição
+
+O assistente nunca tenta adivinhar o que foi dito. Se não houver texto, a conversa vai para a equipe, com o status **Aguardando atendente**, e alguém ouve o áudio e responde. Isso acontece quando:
+
+| O que aparece na caixa | O que significa |
+| --- | --- |
+| **Não foi possível transcrever. Ouça o áudio.** | A transcrição falhou para esse áudio. Ele continua disponível para ouvir. |
+| **Transcrição indisponível. Ouça o áudio.** | A transcrição automática não está ativa para a clínica. Os áudios chegam normalmente e a equipe ouve e responde. |
+
+<Callout title="Ativação da transcrição">
+  A transcrição automática é ativada pela equipe do Sile. Se os áudios da sua clínica sempre aparecem como **Transcrição indisponível**, fale com o suporte.
+</Callout>
+
+Se uma pessoa já está atendendo a conversa, o assistente não responde. O áudio e a transcrição aparecem do mesmo jeito para quem está atendendo.
+
+## Quem pode ouvir
+
+Os áudios ficam guardados no Sile e só abrem para quem tem acesso à Inbox da clínica (**Owner**, **Admin** e **Atendente**), dentro do Sile. Não existe link público para o arquivo.
+
+A transcrição pertence à conversa: ela não entra no Conhecimento. Se a clínica anonimizar os dados de um paciente, os áudios e as transcrições dele são apagados.
