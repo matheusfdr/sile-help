@@ -1,6 +1,6 @@
 // Atendimento: Inbox of the operating Clínica Aurora, logged in as Ana Martins (Owner).
 // Validates and captures: overview, opening a conversation, taking over, returning to the assistant ("Lia" in the dataset),
-// sending messages, templates, attachments and the contact panel.
+// sending messages and templates, and the contact panel. Received files and voice messages: midias.spec.ts.
 import { test, expect, type Page } from '@playwright/test';
 import { start, go, settle, highlight, clearHighlights, shot } from './helpers';
 
@@ -91,7 +91,7 @@ test('assumir e devolver um atendimento', async ({ page }) => {
   await shot(page, `${DIR}/devolver-03-ia-de-volta`, { locator: chat(page) });
 });
 
-test('enviar mensagens, modelos e anexos', async ({ page }) => {
+test('enviar mensagens e modelos', async ({ page }) => {
   await start(page);
   await go(page, '/inbox');
   await settle(page, 700);
@@ -104,37 +104,13 @@ test('enviar mensagens, modelos e anexos', async ({ page }) => {
   // Conversa da Ana: texto
   await open(page, 'Rafael Gomes');
   const box = page.getByRole('textbox', { name: 'Mensagem' });
-  await box.fill('Oi, Rafael! Vou te mandar as orientações em PDF. Qualquer dúvida, é só chamar por aqui.');
+  await box.fill('Oi, Rafael! A Dra. Camila Rocha vai te passar as orientações na consulta. Qualquer dúvida antes disso, é só chamar por aqui.');
   await highlight(page.locator('.sl-composer').getByRole('button', { name: 'Enviar', exact: true }), 1);
   await shot(page, `${DIR}/enviar-01-texto`, { locator: chat(page) });
   await clearHighlights(page);
   await box.press('Enter');
-  await expect(chat(page).getByText('Vou te mandar as orientações em PDF')).toBeVisible();
+  await expect(chat(page).getByText('vai te passar as orientações na consulta')).toBeVisible();
   await settle(page, 800);
-
-  // Barra de ferramentas do campo de mensagem
-  const bar = page.locator('.sl-composer__bar');
-  await highlight(bar.getByRole('button', { name: 'Emoji' }), 1, { pad: 2 });
-  await highlight(bar.getByRole('button', { name: 'Enviar imagem' }), 2, { pad: 2 });
-  await highlight(bar.getByRole('button', { name: 'Enviar documento' }), 3, { pad: 2 });
-  await highlight(bar.getByRole('button', { name: 'Gravar áudio' }), 4, { pad: 2 });
-  await highlight(bar.getByRole('button', { name: 'Modelos' }), 5, { pad: 2 });
-  await shot(page, `${DIR}/anexos-01-ferramentas`, { locator: composer(page), pad: 16 });
-  await clearHighlights(page);
-
-  // Documento
-  await page.locator('.sl-composer input[type="file"][accept*=".pdf"]').setInputFiles({
-    name: 'orientacoes-preenchimento.pdf', mimeType: 'application/pdf', buffer: Buffer.alloc(184 * 1024, 32),
-  });
-  await expect(chat(page).getByText('orientacoes-preenchimento.pdf')).toBeVisible();
-  await settle(page, 400);
-  await shot(page, `${DIR}/anexos-02-documento-enviado`, { locator: chat(page) });
-
-  // Áudio: gravação em andamento
-  await bar.getByRole('button', { name: 'Gravar áudio' }).click();
-  await page.waitForTimeout(3200);
-  await shot(page, `${DIR}/anexos-03-gravando-audio`, { locator: composer(page), pad: 4 });
-  await page.getByRole('button', { name: 'Descartar áudio' }).click();
 
   // Modelos aprovados
   await page.locator('.sl-composer__bar').getByRole('button', { name: 'Modelos' }).click();

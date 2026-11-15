@@ -1,0 +1,61 @@
+---
+title: O que o assistente atualiza no CRM
+description: Veja exatamente o que o assistente pode registrar no CRM durante a conversa quando a ferramenta Atualizar CRM está ligada, e o que ele nunca altera.
+type: referencia
+topic: agente
+order: 2
+lastUpdated: 2026-11-15
+related:
+  - /agente/identidade-e-comportamento
+  - /atendimento/informacoes-do-contato
+  - /comecando/configurar-agente
+aliases:
+  - atualizar crm
+  - ferramentas do agente
+  - ia altera contato
+  - tags automáticas
+  - funil automático
+  - nota do assistente
+---
+
+Com a ferramenta **Atualizar CRM** ligada, o assistente registra no CRM o que aprende na conversa: o serviço de interesse, tags, a etapa do funil, uma nota e dados que ainda faltam no cadastro. Ele trabalha só com uma lista fechada de alterações, sempre no paciente daquela conversa.
+
+## Onde ligar ou desligar
+
+Em **Inteligência → Agente**, na seção **Ferramentas**, use a chave **Atualizar CRM**. Desligada, o assistente continua atendendo, mas não muda nada no CRM. Veja [Identidade e comportamento do agente](/agente/identidade-e-comportamento).
+
+## O que o assistente pode fazer
+
+| Ação | Como funciona |
+| --- | --- |
+| Registrar o serviço de interesse | Marca o serviço da clínica pelo qual o paciente demonstrou interesse claro, como Botox ou Clareamento. |
+| Adicionar tags | Só tags que já existem na clínica, até três por resposta. Ele nunca cria uma tag nova nem remove uma tag. |
+| Avançar no funil | Só para frente e só até a etapa anterior à última etapa em andamento. No funil padrão, vai no máximo até **Agendado**. |
+| Registrar uma nota | Uma nota curta por resposta, com interesse, preferência de horário ou objeção comercial. Nunca dados clínicos nem a conversa inteira. |
+| Completar nome e e-mail | Só quando o campo ainda está vazio (por exemplo, o contato aparece só com o número) e com o que o próprio paciente informou. Nunca troca um dado já cadastrado. |
+
+Cada resposta do assistente faz no máximo seis alterações no CRM.
+
+## O que o assistente nunca faz
+
+- apagar, arquivar ou anonimizar um contato;
+- marcar **Compareceu**, **Convertido** ou **Perdido**, nem fechar uma oportunidade;
+- marcar ou desmarcar **Não contatar**;
+- alterar telefone, responsável ou um dado que já estava preenchido;
+- mexer em outro paciente, em pagamentos, na equipe ou em permissões.
+
+Pedidos do paciente não mudam essas regras. Se alguém escrever, ou disser num áudio, "apague meu cadastro" ou "mude tudo no sistema", o assistente não faz: essas ações ficam com a equipe.
+
+## Quando o assistente não altera nada
+
+- Uma pessoa assumiu a conversa: a partir daí, só a equipe mexe no CRM por aquela conversa.
+- O contato foi anonimizado.
+- A ferramenta **Atualizar CRM** está desligada.
+
+## Como conferir o que mudou
+
+Cada alteração fica registrada no histórico do contato e na auditoria da clínica, em nome do assistente, por exemplo **Atualizado por Lia**. Para ver o cadastro, abra o painel do contato na conversa. Veja [Como visualizar informações do contato](/atendimento/informacoes-do-contato).
+
+## Exemplo
+
+Mariana Souza contou que nunca fez Botox e prefere horários de manhã. Com **Atualizar CRM** ligada, a Lia registrou Botox como serviço de interesse, adicionou a tag Botox, que já existia na clínica, avançou Mariana para **Qualificado** e deixou a nota "Prefere horários pela manhã".

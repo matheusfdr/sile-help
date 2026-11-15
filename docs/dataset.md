@@ -88,6 +88,15 @@ Nos pacientes da história, Mariana Souza também tem a etiqueta Avaliação, Ju
 
 Modelos aprovados: **Retorno semestral** (nome do paciente e da clínica) e **Convite para um serviço** (nome do paciente, da clínica e um serviço escolhido na campanha).
 
+### Mídias recebidas
+
+As capturas de áudio e arquivos (`midias.spec.ts`) não estão no dataset fixo: o paciente as envia na hora, pelo simulador de WhatsApp do app em desenvolvimento.
+
+| Paciente | O que envia | Na história |
+| --- | --- | --- |
+| Felipe Martins | Mensagem de voz pedindo para remarcar a consulta para a próxima semana, de manhã (transcrição fictícia) | A Lia responde com horários de consulta de retorno |
+| Rafael Gomes | Uma imagem, o documento `exame.pdf` e um vídeo | Conversa atendida por Ana Martins |
+
 ## Assistente da clínica
 
 | Estágio | Nome | Configuração |
