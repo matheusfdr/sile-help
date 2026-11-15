@@ -111,18 +111,6 @@ test('enviar mensagens e modelos', async ({ page }) => {
   await box.press('Enter');
   await expect(chat(page).getByText('vai te passar as orientações na consulta')).toBeVisible();
   await settle(page, 800);
-
-  // Modelos aprovados
-  await page.locator('.sl-composer__bar').getByRole('button', { name: 'Modelos' }).click();
-  await expect(page.locator('.sl-composer__templates')).toBeVisible();
-  await page.waitForTimeout(300);
-  const pop = await page.locator('.sl-composer__templates').boundingBox();
-  const comp = await composer(page).boundingBox();
-  if (pop && comp) {
-    const top = Math.min(pop.y, comp.y) - 16;
-    await shot(page, `${DIR}/enviar-02-modelos`, { clip: { x: comp.x - 16, y: top, width: comp.width + 32, height: comp.y + comp.height - top + 12 } });
-  }
-  await page.keyboard.press('Escape');
 });
 
 test('informações do contato', async ({ page }) => {
