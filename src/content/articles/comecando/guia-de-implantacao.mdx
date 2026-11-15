@@ -4,7 +4,7 @@ description: Do primeiro acesso ao primeiro paciente atendido. Todos os passos p
 type: tutorial
 topic: comecando
 order: 0
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-13
 related:
   - /comecando/primeiros-passos
   - /comecando/conectar-whatsapp
@@ -19,7 +19,7 @@ aliases:
   - treinamento
 ---
 
-Este guia leva a clínica do primeiro acesso até o Sile atendendo pacientes no WhatsApp, com a equipe na Inbox e a agenda recebendo agendamentos. Siga as partes na ordem. Cada uma mostra a tela real e o que clicar.
+Este guia leva a clínica do primeiro acesso até o assistente da clínica atendendo pacientes no WhatsApp, com a equipe na Inbox e a agenda recebendo agendamentos. Siga as partes na ordem. Cada uma mostra a tela real e o que clicar.
 
 Nos exemplos, usamos a Clínica Aurora, uma clínica fictícia de odontologia e harmonização orofacial. Ana Martins é a responsável pela implantação (perfil Owner).
 
@@ -27,17 +27,17 @@ Nos exemplos, usamos a Clínica Aurora, uma clínica fictícia de odontologia e 
 | --- | --- | --- |
 | 1. Antes de começar | Separa as informações da clínica | Responsável pela clínica |
 | 2. Primeiro acesso | Aceita o convite e entra | Cada pessoa da equipe |
-| 3. Configuração guiada | Cadastra o essencial e ativa o Sile | Owner ou Admin |
+| 3. Configuração guiada | Cadastra o essencial e ativa o assistente | Owner ou Admin |
 | 4. Primeira semana | Completa serviços, profissionais, conhecimento, agente, modelos e automações | Owner ou Admin |
 | 5. Equipe | Convida as pessoas e define os perfis | Owner ou Admin |
 | 6. Primeiro dia de atendimento | Acompanha a Inbox, assume conversas e agenda | Toda a equipe |
 
 ## Parte 1: antes de começar
 
-Separar estas informações antes de entrar deixa a configuração rápida e evita que o Sile responda com dados incompletos.
+Separar estas informações antes de entrar deixa a configuração rápida e evita que o assistente responda com dados incompletos.
 
 - **Clínica**: nome, telefone, e-mail de contato, segmento, endereço completo e telefone de cada unidade, horário de atendimento dia a dia.
-- **Serviços**: nome de cada procedimento, preço (ou se é gratuito), se o preço é "a partir de", duração e se o Sile pode agendá-lo sozinho.
+- **Serviços**: nome de cada procedimento, preço (ou se é gratuito), se o preço é "a partir de", duração e se o assistente pode agendá-lo sozinho.
 - **Profissionais**: nome, especialidade, serviços que realiza e dias e horários em que atende.
 - **WhatsApp**: o número de WhatsApp Business que os pacientes conhecem e o acesso à conta do Facebook da clínica que administra esse número.
 - **Conhecimento**: formas de pagamento, política de cancelamento, tolerância de atraso, respostas às perguntas mais comuns e documentos de apoio (PDF, DOCX ou TXT, até 10 MB cada).
@@ -67,7 +67,7 @@ Se o seu e-mail faz parte de mais de uma clínica, o Sile pergunta em qual você
 
 ## Parte 3: configuração guiada
 
-A configuração guiada são nove etapas dentro do próprio Sile e termina com o Sile ativado. Só Owners e Admins a veem.
+A configuração guiada são nove etapas dentro do próprio Sile e termina com o assistente da clínica ativado. Só Owners e Admins a veem.
 
 <Steps>
   <Step title="Abra a configuração">
@@ -81,7 +81,7 @@ A configuração guiada são nove etapas dentro do próprio Sile e termina com o
     <Screenshot src="/images/comecando/configurar-clinica-01-sua-clinica.webp" alt="Etapa Sua clínica preenchida com Clínica Aurora, telefone, e-mail de contato e segmento Odontologia." />
   </Step>
   <Step title="Etapa 2: unidade">
-    Preencha nome, endereço, cidade, UF e telefone da unidade. O Sile usa o endereço para responder "onde fica a clínica?".
+    Preencha nome, endereço, cidade, UF e telefone da unidade. O assistente usa o endereço para responder "onde fica a clínica?".
 
     <Screenshot src="/images/comecando/configurar-clinica-02-unidade.webp" alt="Etapa Unidade preenchida com Unidade Centro, Rua das Flores, 100, Centro, São Paulo, SP." />
   </Step>
@@ -100,9 +100,9 @@ A configuração guiada são nove etapas dentro do próprio Sile e termina com o
   <Step title="Etapa 5: WhatsApp">
     Clique em **Conectar com a Meta**, entre com a conta do Facebook da clínica e escolha o número. O cartão mostra **Conectando** e depois **Conectado**.
 
-    <Screenshot src="/images/comecando/conectar-whatsapp-04-conectado.webp" alt="Etapa WhatsApp com o status Conectado, o número +55 11 90000-0100 e o nome Clínica Aurora, e o aviso de que conectar não ativa o Sile." />
+    <Screenshot src="/images/comecando/conectar-whatsapp-04-conectado.webp" alt="Etapa WhatsApp com o status Conectado, o número +55 11 90000-0100 e o nome Clínica Aurora, e o aviso de que conectar não ativa o assistente." />
 
-    Conectar não liga o Sile. Ele só começa a responder pacientes na etapa 9.
+    Conectar não liga o assistente. Ele só começa a responder pacientes na etapa 9.
   </Step>
   <Step title="Etapa 6: horário de atendimento">
     Ajuste os dias e horários em que a clínica atende. Use **Adicionar horário** para pausas, como o almoço. Este é o horário da clínica; a agenda de cada profissional é configurada em Profissionais.
@@ -110,42 +110,42 @@ A configuração guiada são nove etapas dentro do próprio Sile e termina com o
     <Screenshot src="/images/comecando/configurar-clinica-03-horario.webp" alt="Etapa Agenda com o horário da Clínica Aurora: segunda a sexta das 08:00 às 19:00 e sábado das 09:00 às 13:00." />
   </Step>
   <Step title="Etapa 7: agente">
-    Escolha o **Nome do assistente**, a **Personalidade** e descreva o **Objetivo** em uma frase. As regras de segurança já vêm ligadas: o Sile nunca inventa preço, promoção ou horário e nunca faz diagnóstico.
+    Escolha o **Nome do assistente** (começa como "Assistente"; pode trocar por um nome próprio, como Lia), a **Personalidade** e descreva o **Objetivo** em uma frase. As regras de segurança já vêm ligadas: o assistente nunca inventa preço, promoção ou horário e nunca faz diagnóstico.
 
-    <Screenshot src="/images/comecando/configurar-agente-01-etapa.webp" alt="Etapa Agente com o status atual Rascunho, o nome Sile, a personalidade Acolhedor e o objetivo preenchido." />
+    <Screenshot src="/images/comecando/configurar-agente-01-etapa.webp" alt="Etapa Agente com o status atual Rascunho, o nome Assistente, o exemplo de apresentação, a personalidade Acolhedor e o objetivo preenchido." />
   </Step>
   <Step title="Etapa 8: teste">
-    Converse com o Sile como um paciente: pergunte preços, peça um horário. Nada é enviado a pacientes. Quando ele responder bem, clique em **O Sile respondeu bem**.
+    Converse com o assistente como um paciente: pergunte preços, peça um horário. Nada é enviado a pacientes. Quando ele responder bem, clique em **O assistente respondeu bem**.
 
-    <Screenshot src="/images/comecando/testar-01-etapa-teste.webp" alt="Etapa Teste com o Sile informando o preço do clareamento e oferecendo horários de avaliação com a Dra. Camila Rocha." />
+    <Screenshot src="/images/comecando/testar-01-etapa-teste.webp" alt="Etapa Teste com o assistente informando o preço do clareamento e oferecendo horários de avaliação com a Dra. Camila Rocha." />
   </Step>
   <Step title="Etapa 9: ativar">
-    Confira os quatro requisitos: serviços, profissionais, WhatsApp conectado e Sile testado. Se faltar algo, clique em **Resolver**. Com tudo pronto, clique em **Ativar o Sile** e confirme em **Ativar**.
+    Confira os requisitos: serviços, profissionais, WhatsApp conectado, assistente testado e teste gratuito iniciado (clique em **Iniciar teste grátis**, se ainda não começou). Se faltar algo, clique em **Resolver**. Com tudo pronto, clique em **Ativar o assistente** e confirme em **Ativar**.
 
-    <Screenshot src="/images/comecando/ativar-01-checklist.webp" alt="Etapa Ativar com os quatro requisitos prontos, o aviso Tudo pronto e o botão Ativar o Sile destacado." />
+    <Screenshot src="/images/comecando/ativar-01-checklist.webp" alt="Etapa Ativar com os requisitos prontos, inclusive o teste gratuito iniciado, o aviso Tudo pronto e o botão Ativar o assistente destacado." />
   </Step>
 </Steps>
 
-Pronto: a partir de agora o Sile responde os pacientes no WhatsApp. Você pode parar a configuração no meio a qualquer momento em **Salvar e continuar depois**: o que já foi digitado fica como rascunho por 7 dias.
+Pronto: a partir de agora o assistente responde os pacientes no WhatsApp. Você pode parar a configuração no meio a qualquer momento em **Salvar e continuar depois**: o que já foi digitado fica como rascunho por 7 dias.
 
 ## Parte 4: primeira semana
 
-A configuração guiada cadastra o essencial. Na primeira semana, complete os detalhes que tornam as respostas do Sile mais precisas.
+A configuração guiada cadastra o essencial. Na primeira semana, complete os detalhes que tornam as respostas do assistente mais precisas.
 
 ### Serviços: descrições e quem agenda
 
-No menu lateral, acesse **Operação → Serviços**. A tabela mostra preço, duração, profissionais, unidade e se o Sile pode agendar cada serviço.
+No menu lateral, acesse **Operação → Serviços**. A tabela mostra preço, duração, profissionais, unidade e se o assistente pode agendar cada serviço.
 
-<Screenshot src="/images/onboarding/cadastro-01-servicos.webp" alt="Tela Serviços da Clínica Aurora com os seis serviços, preço, duração, profissionais, unidade, o interruptor Agendamento pelo Sile e o status de cada um." />
+<Screenshot src="/images/onboarding/cadastro-01-servicos.webp" alt="Tela Serviços da Clínica Aurora com os seis serviços, preço, duração, profissionais, unidade, o interruptor Agendamento pelo assistente e o status de cada um." />
 
-Clique em um serviço para editar. Escreva a **Descrição**, que o Sile usa para explicar o procedimento, confira os **Profissionais** e decida:
+Clique em um serviço para editar. Escreva a **Descrição**, que o assistente usa para explicar o procedimento, confira os **Profissionais** e decida:
 
-- **Sile pode agendar este serviço**: desligado, o Sile informa o serviço e transfere para a equipe agendar;
-- **Serviço ativo**: serviços inativos não aparecem para agendamento nem para o Sile.
+- **O assistente pode agendar este serviço**: desligado, o assistente informa o serviço e transfere para a equipe agendar;
+- **Serviço ativo**: serviços inativos não aparecem para agendamento nem para o assistente.
 
 Clique em **Salvar alterações**.
 
-<Screenshot src="/images/onboarding/cadastro-02-servico-detalhe.webp" alt="Painel do serviço Botox com o nome, a descrição preenchida, o preço 700 a partir de, a duração de 45 minutos, a Dra. Camila Rocha marcada como profissional e as opções Sile pode agendar este serviço e Serviço ativo." narrow />
+<Screenshot src="/images/onboarding/cadastro-02-servico-detalhe.webp" alt="Painel do serviço Botox com o nome, a descrição preenchida, o preço 700 a partir de, a duração de 45 minutos, a Dra. Camila Rocha marcada como profissional e as opções O assistente pode agendar este serviço e Serviço ativo." narrow />
 
 ### Profissionais: disponibilidade real
 
@@ -153,27 +153,27 @@ Em **Operação → Profissionais**, cada cartão mostra os serviços, a disponi
 
 <Screenshot src="/images/onboarding/cadastro-03-profissionais.webp" alt="Tela Profissionais com os cartões da Dra. Camila Rocha, do Dr. Rafael Lima e da Dra. Fernanda Alves, com serviços, disponibilidade, unidade e agenda." />
 
-Clique em **Detalhes** e abra a aba **Disponibilidade**. Ligue os dias em que a pessoa atende, ajuste os horários, use **Adicionar horário** para pausas e clique em **Salvar disponibilidade**. O Sile só oferece horários dentro dessa disponibilidade.
+Clique em **Detalhes** e abra a aba **Disponibilidade**. Ligue os dias em que a pessoa atende, ajuste os horários, use **Adicionar horário** para pausas e clique em **Salvar disponibilidade**. O assistente só oferece horários dentro dessa disponibilidade.
 
 <Screenshot src="/images/onboarding/cadastro-04-disponibilidade.webp" alt="Aba Disponibilidade da Dra. Camila Rocha: segunda, quarta e sexta das 09:00 às 12:00 e das 13:00 às 18:00, demais dias sem atendimento." />
 
-### Conhecimento: o que o Sile sabe
+### Conhecimento: o que o assistente sabe
 
-Em **Inteligência → Conhecimento**, o quadro no topo mostra o quanto a base está completa e o que falta. Serviços, profissionais e unidades entram sozinhos, a partir dos cadastros.
+Em **Inteligência → Conhecimento**, o quadro no topo mostra o quanto a base está completa e o que falta. Serviços, profissionais e unidades entram sozinhos, a partir dos cadastros. O Conhecimento guarda informações sobre a clínica; o nome e o jeito de atender do assistente ficam em **Identidade e comportamento**, no fim do menu da mesma tela. Veja [O que colocar no Conhecimento](/agente/conhecimento).
 
-<Screenshot src="/images/onboarding/cadastro-05-conhecimento.webp" alt="Tela Conhecimento com a base 87,5% completa, as seções Clínica, Unidades, Serviços, Profissionais, FAQ, Políticas, Informações adicionais e Arquivos, e os textos da seção Clínica." />
+<Screenshot src="/images/onboarding/cadastro-05-conhecimento.webp" alt="Tela Conhecimento com a base completa, o menu com o grupo O que o assistente sabe (Clínica, Unidades, Serviços, Profissionais, FAQ, Políticas, Informações adicionais e Arquivos) e o grupo Como o assistente age, e os textos da seção Clínica." />
 
 Preencha as outras seções:
 
 - **Clínica**, **Políticas** e **Informações adicionais**: clique em **Adicionar**, escreva o **Título** e o **Conteúdo** e salve;
-- **FAQ**: clique em **Nova pergunta**, escreva a **Pergunta** como o paciente perguntaria e a **Resposta** que o Sile deve dar;
+- **FAQ**: clique em **Nova pergunta**, escreva a **Pergunta** como o paciente perguntaria e a **Resposta** que o assistente deve dar;
 - **Arquivos**: envie PDF, DOCX ou TXT de até 10 MB, como a tabela de preços.
 
 <Screenshot src="/images/onboarding/cadastro-06-nova-pergunta.webp" alt="Seção Perguntas frequentes com a nova pergunta Vocês atendem aos domingos? e a resposta com o horário da clínica, e o botão Salvar destacado." />
 
 ### Agente: ajuste fino
 
-Em **Inteligência → Agente**, além do que a configuração guiada pediu, você ajusta a comunicação, as regras, as ferramentas e quando a conversa passa para a equipe. A coluna **Prévia** mostra como o Sile responderia. As mudanças só valem depois de **Salvar alterações**.
+Em **Inteligência → Agente**, além do que a configuração guiada pediu, você ajusta a apresentação, o papel, a descrição da personalidade, a comunicação, as regras, as ferramentas, quando a conversa passa para a equipe e as mensagens de atendimento. O quadro **Exemplo** ilustra a configuração; para testar de verdade, use **Testar sem salvar** ou o Playground. As mudanças só valem depois de **Salvar alterações**. Veja [Identidade e comportamento do agente](/agente/identidade-e-comportamento).
 
 <Tabs label="Seções da tela Agente">
   <Tab label="Comunicação">
@@ -187,14 +187,14 @@ Em **Inteligência → Agente**, além do que a configuração guiada pediu, voc
     <Screenshot src="/images/onboarding/agente-02-regras.webp" alt="Seção Regras com as regras fixas marcadas como sempre ativas, as regras opcionais ligadas e a regra da clínica Sempre perguntar o nome do paciente no primeiro contato." />
   </Tab>
   <Tab label="Ferramentas">
-    O que o Sile pode fazer sozinho, como consultar a agenda, criar agendamentos e transferir para a equipe.
+    O que o assistente pode fazer sozinho, como consultar a agenda, criar agendamentos e transferir para a equipe.
 
     <Screenshot src="/images/onboarding/agente-03-ferramentas.webp" alt="Seção Ferramentas com Consultar agenda, Criar agendamento, Consultar conhecimento, Atualizar CRM e Transferir para humano ligados e Cancelar agendamento desligado." />
   </Tab>
   <Tab label="Transferência">
-    Quando a conversa passa para a equipe: pedido do paciente, dúvidas clínicas (sempre), reclamações e fora do horário.
+    Quando a conversa passa para a equipe: pedido do paciente, reclamações e dúvidas clínicas (sempre, regra da plataforma). Fora do horário, vale a regra de **Configurações → Atendimento**.
 
-    <Screenshot src="/images/onboarding/agente-04-transferencia.webp" alt="Seção Transferência para humano com as opções de transferir quando o paciente pedir, em dúvidas clínicas, em reclamações e fora do horário de atendimento." />
+    <Screenshot src="/images/onboarding/agente-04-transferencia.webp" alt="Seção Transferência para humano com as opções de transferir quando o paciente pedir e em reclamações, a linha de dúvidas clínicas travada como regra da plataforma e a linha Fora do horário de atendimento com o atalho para Configurações." />
   </Tab>
 </Tabs>
 
@@ -216,9 +216,9 @@ Em **Operação → Automações**, a aba **Receitas** traz automações prontas
 
 ### Atendimento fora do horário
 
-Em **Administração → Configurações → Atendimento**, defina a meta de primeira resposta da equipe, se o Sile atende fora do horário e a mensagem enviada quando a clínica está fechada.
+Em **Administração → Configurações → Atendimento**, defina a meta de primeira resposta da equipe, se o assistente atende fora do horário e a mensagem enviada quando a clínica está fechada. Se ele não atender fora do horário, o paciente recebe essa mensagem e a conversa espera a equipe.
 
-<Screenshot src="/images/onboarding/config-01-atendimento.webp" alt="Regras de atendimento com a meta de primeira resposta de 5 minutos, Sile atende fora do horário ligado, a mensagem fora do horário e encerrar conversas inativas após 7 dias." />
+<Screenshot src="/images/onboarding/config-01-atendimento.webp" alt="Regras de atendimento com a meta de primeira resposta de 5 minutos, O assistente atende fora do horário ligado, a mensagem fora do horário e encerrar conversas inativas após 7 dias." />
 
 ## Parte 5: equipe
 
@@ -239,14 +239,14 @@ O quadro **Perfis de acesso**, ao lado da lista, mostra o que cada perfil pode f
 
 ## Parte 6: primeiro dia de atendimento
 
-Com o Sile ativo, as conversas chegam na **Inbox**. A equipe acompanha, assume quando precisa e devolve para o Sile depois.
+Com o assistente ativo, as conversas chegam na **Inbox**. A equipe acompanha, assume quando precisa e devolve para o assistente depois.
 
 <Screenshot src="/images/atendimento/inbox-03-areas.webp" alt="Inbox da Clínica Aurora com a lista de conversas (1), a conversa com Mariana Souza (2) e o painel com os dados da paciente (3)." />
 
-1. Na lista, cada conversa mostra quem está atendendo: **Sile**, o nome de uma pessoa ou **Na fila** (transferida e aguardando alguém).
-2. Para responder um paciente, abra a conversa e clique em **Assumir atendimento**. O Sile para só naquela conversa. Veja [Como assumir um atendimento](/atendimento/assumir-conversa).
-3. Quando terminar, clique em **Devolver para IA** para o Sile continuar. Veja [Como devolver uma conversa para a IA](/atendimento/devolver-para-ia).
-4. Use o filtro **Precisa de atenção** para encontrar o que o Sile transferiu para a equipe.
+1. Na lista, cada conversa mostra quem está atendendo: o nome do assistente (na Clínica Aurora, **Lia**), o nome de uma pessoa ou **Na fila** (transferida e aguardando alguém).
+2. Para responder um paciente, abra a conversa e clique em **Assumir atendimento**. O assistente para só naquela conversa. Veja [Como assumir um atendimento](/atendimento/assumir-conversa).
+3. Quando terminar, clique em **Devolver para IA** para o assistente continuar. Veja [Como devolver uma conversa para a IA](/atendimento/devolver-para-ia).
+4. Use o filtro **Precisa de atenção** para encontrar o que o assistente transferiu para a equipe.
 
 ### Agendar pela conversa
 
@@ -265,7 +265,7 @@ O agendamento aparece na **Agenda**, que você vê por dia, semana ou mês e fil
 - [ ] A disponibilidade de cada profissional está correta
 - [ ] O WhatsApp aparece como Conectado em Integrações
 - [ ] A base de conhecimento tem formas de pagamento, políticas e as perguntas mais comuns
-- [ ] O Sile foi testado no Playground e está Ativo
+- [ ] O assistente foi testado no Playground e está Ativo
 - [ ] Os modelos de mensagem estão aprovados e as automações principais estão ativas
 - [ ] A equipe sabe assumir, devolver e agendar pela Inbox
 

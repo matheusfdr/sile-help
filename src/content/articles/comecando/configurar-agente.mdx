@@ -1,29 +1,32 @@
 ---
 title: Configurar o agente
-description: Defina o nome, a personalidade e o objetivo do Sile na configuração guiada, sem escrever nenhum prompt técnico.
+description: Defina o nome, a personalidade e o objetivo do assistente da clínica na configuração guiada, sem escrever nenhum prompt técnico.
 type: tutorial
 topic: comecando
 order: 7
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-13
 related:
+  - /agente/identidade-e-comportamento
   - /comecando/testar-no-playground
   - /comecando/ativar-o-sile
-  - /comecando/visao-geral
+  - /agente/conhecimento
 aliases:
   - configurar ia
-  - personalidade do sile
+  - personalidade do assistente
   - nome do assistente
   - objetivo do agente
   - tom de voz
   - prompt
 ---
 
-Na etapa **Agente** da configuração guiada você define como o Sile conversa com os pacientes: o nome com que ele se apresenta, a personalidade e o objetivo de cada conversa. Você configura comportamentos; o Sile transforma isso nas instruções da IA.
+Na etapa **Agente** da configuração guiada você define o essencial de como o assistente da clínica conversa com os pacientes: o nome com que ele se apresenta, a personalidade e o objetivo de cada conversa. Você configura comportamentos; o Sile transforma isso nas instruções da IA.
+
+O Sile é a plataforma. O assistente é da clínica e tem o nome que vocês escolherem.
 
 ## Antes de começar
 
 - Você precisa ser **Owner** ou **Admin**.
-- Cadastre os serviços e os profissionais antes. O Sile responde a partir deles.
+- Cadastre os serviços e os profissionais antes. O assistente responde a partir deles.
 
 ## Como fazer
 
@@ -32,42 +35,27 @@ Na etapa **Agente** da configuração guiada você define como o Sile conversa c
     No topo da etapa 7, o aviso mostra o status do agente. Em uma clínica nova, ele está em **Rascunho**: ainda não responde pacientes. Esta etapa não muda o status. A ativação acontece só na última etapa.
   </Step>
   <Step title="Escolha o nome do assistente">
-    Em **Nome do assistente**, mantenha "Sile" ou use um nome próprio da clínica. É com esse nome que ele se apresenta aos pacientes.
+    Em **Nome do assistente**, o campo começa com "Assistente", o nome neutro. Pode manter ou escolher um nome próprio, como Sofia ou Lia. É esse nome que os pacientes veem. Logo abaixo, um exemplo mostra como ele se apresenta no início de cada atendimento, já com o nome escolhido.
   </Step>
   <Step title="Escolha a personalidade">
-    Na configuração guiada há três opções:
-
-    - **Profissional**: cordial e preciso;
-    - **Amigável**: leve e próximo;
-    - **Acolhedor**: empático e paciente.
+    Escolha um dos cinco estilos: **Profissional**, **Amigável**, **Objetivo**, **Acolhedor** ou **Persuasivo**.
   </Step>
   <Step title="Descreva o objetivo e salve">
-    Em **Objetivo**, escreva em uma frase o que o Sile deve buscar em cada conversa, por exemplo: "Tirar dúvidas sobre os tratamentos e conduzir o paciente para uma avaliação." Clique em **Salvar e continuar**.
+    Em **Objetivo**, escreva em uma frase o que o assistente deve buscar em cada conversa, por exemplo: "Tirar dúvidas sobre os tratamentos e conduzir o paciente para uma avaliação." Clique em **Salvar e continuar**.
 
-    <Screenshot src="/images/comecando/configurar-agente-01-etapa.webp" alt="Etapa 7 de 9, Agente, com o status atual Rascunho, o nome do assistente Sile, a personalidade Acolhedor selecionada, o objetivo preenchido e o aviso de que as regras de segurança já vêm ligadas." />
+    <Screenshot src="/images/comecando/configurar-agente-01-etapa.webp" alt="Etapa 7 de 9, Agente, com o status atual Rascunho, o nome do assistente Assistente, o exemplo de apresentação, os cinco estilos de personalidade com Acolhedor selecionado, o objetivo preenchido e o aviso de que as regras de segurança já vêm ligadas." />
   </Step>
 </Steps>
 
+Tudo o que você escolhe aqui pode ser mudado depois, a qualquer momento.
+
 ## Regras que já vêm ligadas
 
-Algumas regras de segurança não podem ser desligadas: o Sile nunca inventa preço, promoção ou horário e nunca faz diagnóstico. Quando a dúvida é clínica, ele transfere a conversa para a equipe.
+Algumas regras de segurança não podem ser desligadas: o assistente nunca inventa preço, promoção ou horário e nunca faz diagnóstico. Quando a dúvida é clínica, ele sempre transfere a conversa para a equipe.
 
 ## O que mais dá para ajustar depois
 
-A configuração guiada pede só o essencial. Depois, na tela **Inteligência → Agente**, você encontra todas as opções:
-
-| Seção | O que você ajusta |
-| --- | --- |
-| Identidade | Nome do assistente |
-| Objetivo | O que o Sile busca em cada conversa, com sugestões prontas |
-| Personalidade | Profissional, Amigável, Objetivo, Acolhedor ou Persuasivo |
-| Comunicação | Tamanho das mensagens, uma pergunta por vez, uso de emojis e formalidade |
-| Regras | Regras fixas de segurança e regras próprias da clínica |
-| Objetivo comercial | Conduzir para agendamento, qualificar e transferir ou só tirar dúvidas |
-| Ferramentas | O que o Sile pode fazer sozinho, como consultar a agenda ou criar agendamentos |
-| Transferência para humano | Quando a conversa passa para a equipe |
-
-A coluna **Prévia**, à direita da tela Agente, mostra como o Sile responderia com a configuração que você está editando. As mudanças só valem depois de **Salvar alterações**.
+A configuração guiada pede só o essencial. A apresentação, o papel do assistente, a descrição da personalidade, a comunicação, as regras da clínica, as ações permitidas, a transferência para humano e as mensagens de atendimento ficam em **Inteligência → Agente** ou em **Inteligência → Conhecimento → Identidade e comportamento**, que editam a mesma configuração. Veja [Identidade e comportamento do agente](/agente/identidade-e-comportamento).
 
 <Tip>
   Depois de configurar, teste antes de ativar. Veja [Testar o agente no Playground](/comecando/testar-no-playground).

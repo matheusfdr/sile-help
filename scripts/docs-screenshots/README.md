@@ -45,8 +45,9 @@ Sile local (dataset Clínica Aurora)
 
 | Spec | Artigos |
 | --- | --- |
-| `comecando.spec.ts` | Começando: configuração guiada completa (estágio em implantação), Integrações, Agente e Playground |
+| `comecando.spec.ts` | Começando: configuração guiada completa (estágio em implantação), Integrações, Agente e Playground. O teste "integrações antes de conectar o WhatsApp" falha de propósito enquanto o artigo do WhatsApp não é revisto (o modal de conexão do produto mudou; revisão junto com a integração com a Meta) |
 | `atendimento.spec.ts` | Atendimento: Inbox, abrir, assumir, devolver, enviar mensagens, anexos e dados do contato |
+| `agente.spec.ts` | Inteligência artificial: Identidade e comportamento (em Conhecimento e em Agente), o quadro Exemplo, Testar sem salvar e o Playground com "Configuração não salva" (nada é salvo) |
 | `campanhas.spec.ts` | WhatsApp → Campanhas: lista, as cinco etapas de uma campanha, público e exclusões, agendamento, confirmação, resultados e "Criar campanha" em Contatos |
 
 ## Campanhas

@@ -27,7 +27,7 @@ Regras para todos os artigos da Central de Ajuda. Elas também valem para quem r
 
 ```yaml
 title: Como assumir um atendimento       # frase, sentence case
-description: Saiba como pausar o Sile…    # 20 a 180 caracteres; vira o lead e a meta description
+description: Saiba como pausar o assistente…  # 20 a 180 caracteres; vira o lead e a meta description
 type: tutorial
 topic: conversas                         # ids em src/data/navigation.ts; a pasta é a categoria do tópico
 order: 2                                 # ordem dentro do tópico
@@ -41,7 +41,9 @@ aliases:                                 # como as pessoas procuram; entram na b
 ## Linguagem
 
 - Português do Brasil, sentence case, sem emoji, frases curtas.
-- O produto se chama **Sile**. A IA também aparece como Sile ("o Sile responde"). Nunca "Sile AI".
+- O produto (a plataforma) se chama **Sile**. Nunca "Sile AI".
+- O agente de IA é **o assistente da clínica**: cada clínica escolhe o nome dele (o padrão é "Assistente"). Nos textos, escreva "o assistente" e, nos exemplos, use o nome do dataset (na Clínica Aurora, **Lia**). Não chame o assistente de "Sile": "Sile" é a plataforma ("conecte o WhatsApp ao Sile", "equipe do Sile").
+- Identidade e comportamento (como o assistente atende) e Conhecimento (o que ele sabe) são coisas diferentes: nunca oriente a clínica a colocar nome, tom ou instruções de comportamento no Conhecimento.
 - Escreva para a recepção e para o dono da clínica. Termos técnicos só quando aparecem na tela.
 - Nomes de botões, abas e campos em **negrito**, exatamente como na tela: clique em **Assumir atendimento**.
 - Caminhos de menu com seta: **Atendimento → Inbox**.
