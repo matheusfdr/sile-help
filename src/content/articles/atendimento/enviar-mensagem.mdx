@@ -1,10 +1,10 @@
 ---
 title: Como enviar mensagens
-description: Responda o paciente pela Inbox com texto e emojis, e saiba por que o campo de mensagem às vezes fica bloqueado.
+description: Responda o paciente pela Inbox com texto, emojis ou um modelo aprovado, e saiba o que fazer quando o campo de mensagem fica bloqueado ou a janela de 24 horas fecha.
 type: tutorial
 topic: conversas
 order: 4
-lastUpdated: 2026-11-15
+lastUpdated: 2026-11-16
 related:
   - /atendimento/enviar-anexos
   - /atendimento/assumir-conversa
@@ -17,7 +17,8 @@ aliases:
   - template
   - não consigo responder
   - campo bloqueado
-  - iniciar conversa
+  - janela de 24 horas
+  - enviar modelo
 ---
 
 Pela Inbox você responde o paciente no mesmo WhatsApp da clínica. Para enviar, a conversa precisa estar com você: se o assistente da clínica ou outra pessoa estiver atendendo, primeiro [assuma o atendimento](/atendimento/assumir-conversa).
@@ -64,8 +65,36 @@ Quando você não pode enviar, o campo de mensagem é substituído por um aviso 
 
 <Screenshot src="/images/atendimento/enviar-04-outra-pessoa.webp" alt="Aviso no lugar do campo de mensagem dizendo Lucas está atendendo esta conversa, com o botão Assumir atendimento." />
 
-## Modelos de mensagem pela Inbox
+## Enviar um modelo aprovado
 
-Por enquanto, a Inbox envia só texto. Enviar um modelo aprovado pela Inbox e iniciar uma conversa com um contato que ainda não falou com a clínica dependem da conexão oficial com a Meta e ainda não estão disponíveis. Os modelos aprovados continuam sendo usados pelas [campanhas](/whatsapp/campanhas) e pelas automações.
+Modelos são mensagens prontas, como confirmações e lembretes, que a clínica cadastra em **WhatsApp → Modelos**. Pela Inbox você envia um modelo para o paciente da conversa aberta, conferindo o texto antes.
 
-Se o paciente não fala com a clínica há mais de 24 horas, o WhatsApp só aceita modelos aprovados. Nesse caso, espere o paciente escrever de novo ou fale com ele por outro canal.
+<Steps>
+  <Step title="Clique no ícone de modelos">
+    Na barra do campo de mensagem, clique em **Modelos**. A lista mostra só os modelos que podem ser enviados agora.
+
+    <Screenshot src="/images/atendimento/enviar-02-modelos.webp" alt="Lista de modelos aberta sobre o campo de mensagem da conversa com Rafael Gomes, cada um já preenchido com os dados dele." />
+  </Step>
+  <Step title="Confira as variáveis">
+    Ao escolher um modelo, abre a janela **Enviar modelo**. O Sile já preenche o que sabe, como o primeiro nome do paciente, o nome da clínica e os dados do próximo agendamento. Corrija o que for preciso: todos os campos são obrigatórios e cada um aceita uma linha só.
+
+    <Screenshot src="/images/atendimento/enviar-03-modelo-variaveis.webp" alt="Variáveis do modelo preenchidas para Rafael (nome, serviço, data, horário e profissional) e a prévia da mensagem como ela vai aparecer no WhatsApp." />
+  </Step>
+  <Step title="Confira a prévia e envie">
+    A prévia mostra a mensagem como o paciente vai recebê-la. Clique em **Enviar modelo**. A mensagem entra na conversa com o seu nome e o nome do modelo, e o status (enviada, entregue, lida ou com falha) aparece nela, como em qualquer mensagem.
+  </Step>
+</Steps>
+
+Ao lado do modelo aparece quem o aprovou: **Aprovado pela Meta** quando o WhatsApp da clínica está conectado pela Meta. O Sile nunca mostra um modelo como aprovado pela Meta sem a resposta da própria Meta.
+
+<Warning title="Se der erro, nada foi enviado">
+  Se o WhatsApp estiver desconectado ou o contato tiver pedido para não receber mensagens, o Sile mostra o motivo e não envia. Clicar duas vezes em **Enviar modelo** não manda a mensagem duas vezes.
+</Warning>
+
+## Quando a janela de 24 horas fecha
+
+O WhatsApp só aceita mensagens livres até 24 horas depois da última mensagem do paciente. Depois disso, a conversa mostra o aviso **Janela de 24 horas fechada** e só um modelo aprovado pode ser enviado: clique em **Escolher modelo** e siga os passos acima. Quando o paciente responder, a janela abre de novo e você volta a escrever livremente.
+
+Contatos marcados para não receber mensagens nunca recebem modelos. Dentro da janela que o próprio paciente abriu, você ainda pode responder por texto.
+
+Iniciar uma conversa com um contato que nunca falou com a clínica, pela tela do contato, ainda não está disponível.

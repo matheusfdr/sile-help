@@ -111,6 +111,30 @@ test('enviar mensagens e modelos', async ({ page }) => {
   await box.press('Enter');
   await expect(chat(page).getByText('vai te passar as orientações na consulta')).toBeVisible();
   await settle(page, 800);
+
+  // Modelo aprovado: a lista no campo de mensagem e o envio com variáveis e prévia
+  await page.locator('.sl-composer__bar').getByRole('button', { name: 'Modelos' }).click();
+  await expect(page.locator('.sl-composer__templates')).toBeVisible();
+  await page.waitForTimeout(300);
+  const pop = await page.locator('.sl-composer__templates').boundingBox();
+  const comp = await composer(page).boundingBox();
+  if (pop && comp) {
+    const top = Math.min(pop.y, comp.y) - 16;
+    await shot(page, `${DIR}/enviar-02-modelos`, { clip: { x: comp.x - 16, y: top, width: comp.width + 32, height: comp.y + comp.height - top + 12 } });
+  }
+  await page.locator('.sl-composer__templates button').first().click();
+  const modal = page.getByRole('dialog', { name: 'Enviar modelo' });
+  await expect(modal).toBeVisible();
+  await page.waitForTimeout(300);
+  // Variáveis e prévia (o selo de quem aprovou fica fora do recorte: na demonstração ele diz "revisão local").
+  const vars = await modal.locator('.start-conv__vars').boundingBox();
+  const preview = await modal.locator('.start-conv > :last-child').boundingBox();
+  if (vars && preview) {
+    await shot(page, `${DIR}/enviar-03-modelo-variaveis`, { clip: { x: vars.x - 16, y: vars.y - 12, width: vars.width + 32, height: preview.y + preview.height - vars.y + 24 } });
+  }
+  await modal.getByRole('button', { name: 'Enviar modelo' }).click();
+  await expect(modal).toBeHidden();
+  await settle(page, 800);
 });
 
 test('informações do contato', async ({ page }) => {
